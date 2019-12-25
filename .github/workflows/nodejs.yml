@@ -40,6 +40,9 @@ jobs:
         port: ${{ secrets.PORT }}
         script: rm -rf /var/www/kampiraj.ga/html/*
 
+    - name: List files from build
+      run: ls -l /home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web
+
     - name: Copy files via ssh password
       uses: appleboy/scp-action@master
       with:
@@ -47,5 +50,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: " /home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web"
+        source: "/home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web/*"
         target: "/var/www/kampiraj.ga/html/"
