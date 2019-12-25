@@ -28,6 +28,8 @@ jobs:
         npm install
         ng build --prod
         pwd
+        ls -l
+        ls -l dist
 
     - name: Remove old Angular files
       uses: appleboy/ssh-action@master
