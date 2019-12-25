@@ -23,6 +23,7 @@ jobs:
       run: |
         cd code/Avtokampi-Web/
         npm install -g @angular/cli
+        npm install
         ng build --prod
 
     - name: Remove old Angular files
