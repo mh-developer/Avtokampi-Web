@@ -45,5 +45,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: " /home/runner/work/Avtokampi-Web/Avtokampi-Web/"
+        source: " /home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web"
         target: "/var/www/kampiraj.ga/html/"
