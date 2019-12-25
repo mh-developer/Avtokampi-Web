@@ -49,3 +49,13 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "/home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web/dist/*"
         target: "/var/www/kampiraj.ga/html/"
+        
+        
+    - name: Move builded files and folders
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: mv /var/www/kampiraj.ga/html/github/workspace/code/Avtokampi-Web/dist/Avtokampi-Web/* /var/www/kampiraj.ga/html/ && rm -rf /var/www/kampiraj.ga/html/github
