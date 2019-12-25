@@ -1,0 +1,45 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+      
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: npm install, build, and test
+      run: |
+        cd code/Avtokampi-Web/
+        npm install -g @angular/cli
+        ng build --prod
+
+    - name: Remove old Angular files
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: rm -rf /var/www/kampiraj.ga/html/*
+
+    - name: Copy files via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "/home/runner/work/Avtokampi-WebAPI/Avtokampi-WebAPI/code/Avtokampi/AvtokampiWebAPI/bin/Release/netcoreapp3.1/"
+        target: "/var/www/kampiraj.ga/html/"
