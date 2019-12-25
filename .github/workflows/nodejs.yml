@@ -23,8 +23,10 @@ jobs:
       run: |
         cd code/Avtokampi-Web/
         npm install -g @angular/cli
+        npm audit fix
+        ng config -g cli.warnings.versionMismatch false
         npm install
-        ng build --prod
+        ng build --prod --verbose
 
     - name: Remove old Angular files
       uses: appleboy/ssh-action@master
@@ -42,5 +44,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: " /home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web/dist/"
+        source: " /home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web/"
         target: "/var/www/kampiraj.ga/html/"
