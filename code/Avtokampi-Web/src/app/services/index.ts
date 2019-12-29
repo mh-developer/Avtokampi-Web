@@ -1,16 +1,16 @@
-import { AvtokampiService } from "./repositories/avtokampi.service";
-import { KampirnaMestaService } from "./repositories/kampirna_mesta.service";
-import { RezervacijeService } from "./repositories/rezervacije.service";
-import { StoritveKampaService } from "./repositories/storitve_kampa.service";
+import * as fromRepos from './repositories';
 
 export const services: any[] = [
-  AvtokampiService,
-  KampirnaMestaService,
-  RezervacijeService,
-  StoritveKampaService
+  fromRepos.AvtokampiService,
+  fromRepos.KampirnaMestaService,
+  fromRepos.RezervacijeService,
+  fromRepos.StoritveKampaService,
+  fromRepos.ApiService,
+  fromRepos.JwtService,
+  fromRepos.UserService
 ];
 
-export * from "./repositories/avtokampi.service";
-export * from "./repositories/kampirna_mesta.service";
-export * from "./repositories/rezervacije.service";
-export * from "./repositories/storitve_kampa.service";
+export * from './guards';
+export * from './repositories';
+export * from './interceptors';
+export * from './services.module';

@@ -1,4 +1,4 @@
-import { Response } from "../classes/apiresponse.class";
+import { Response } from '../classes/apiresponse.class';
 
 export interface IService {
 
