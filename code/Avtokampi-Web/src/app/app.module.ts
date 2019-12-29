@@ -8,16 +8,17 @@ import * as fromComponents from './components';
 import { ServicesModule } from './services';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ...fromComponents.components
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ServicesModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ...fromComponents.components
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ServicesModule,
+        fromComponents.HomePageModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

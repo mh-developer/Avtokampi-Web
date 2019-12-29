@@ -21,7 +21,7 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets/images"
             ],
             "styles": [
               "src/assets/css/open-iconic-bootstrap.min.css",
@@ -31,6 +31,8 @@
               "src/assets/css/magnific-popup.css",
               "src/assets/css/aos.css",
               "src/assets/css/ionicons.min.css",
+              "src/assets/css/bootstrap-datepicker.css",
+              "src/assets/css/jquery.timepicker.css",
               "src/assets/css/flaticon.css",
               "src/assets/css/icomoon.css",
               "src/assets/css/style.css"
@@ -48,6 +50,7 @@
               "src/assets/js/aos.js",
               "src/assets/js/jquery.animateNumber.min.js",
               "src/assets/js/bootstrap-datepicker.js",
+              "src/assets/js/jquery.timepicker.min.js",
               "src/assets/js/scrollax.min.js",
               "src/assets/js/main.js"
             ]
