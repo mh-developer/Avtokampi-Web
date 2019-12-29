@@ -1,7 +1,7 @@
 import {Avtokamp} from "../../models";
 import {Response} from "../classes/apiresponse.class";
 
-export class AvtokampiService{
+export class AvtokampiService {
 
     static get(kamp_id: number): Response {
       return new Response(0, 0);
