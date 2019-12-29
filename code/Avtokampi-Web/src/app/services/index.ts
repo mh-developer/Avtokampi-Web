@@ -13,4 +13,3 @@ export const services: any[] = [
 export * from './guards';
 export * from './repositories';
 export * from './interceptors';
-export * from './services.module';

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import * as fromComponents from './components';
-import { ServicesModule } from './services';
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
     declarations: [
