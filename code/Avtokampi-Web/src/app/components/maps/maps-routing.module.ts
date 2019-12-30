@@ -5,7 +5,7 @@ import * as fromMaps from '.';
 
 const routes: Routes = [
     {
-        path: 'maps',
+        path: '',
         component: fromMaps.MapComponent
     }
 ];

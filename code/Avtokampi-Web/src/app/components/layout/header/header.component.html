@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" routerLink="/home">
             <img src="assets/images/logo/ikona.png" width="40" height="40" class="d-inline-block align-top" alt="">
             Avtokampi
         </a>
@@ -12,23 +12,23 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a [routerLink]="['/']" class="nav-link">Domov</a>
+                    <a routerLink="/home" class="nav-link">Domov</a>
                 </li>
                 <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a [routerLink]="['/camps']" class="nav-link">Avtokampi</a>
+                    <a routerLink="/camps" class="nav-link">Avtokampi</a>
                 </li>
                 <!-- <li class="nav-item"><a href="tour.html" class="nav-link">Izlet</a></li> -->
                 <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a [routerLink]="['/maps']" class="nav-link">Zemljevid</a>
+                    <a routerLink="/maps" class="nav-link">Zemljevid</a>
                 </li>
                 <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a [routerLink]="['/register']" class="nav-link">Registracija</a>
+                    <a routerLink="/auth/register" class="nav-link">Registracija</a>
                 </li>
                 <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a [routerLink]="['/login']" class="nav-link">Prijava</a>
+                    <a routerLink="/auth/login" class="nav-link">Prijava</a>
                 </li>
                 <li class="nav-item cta">
-                    <a [routerLink]="['/reservation']" class="nav-link"><span>Rezerviraj zdaj</span></a>
+                    <a routerLink="/reservation" class="nav-link"><span>Rezerviraj zdaj</span></a>
                 </li>
             </ul>
         </div>

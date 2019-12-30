@@ -3,7 +3,7 @@ AOS.init({
     easing: 'slide'
 });
 
-$(window).ready(function () {
+$(document).ready(function () {
 
     var isMobile = {
         Android: function () {
