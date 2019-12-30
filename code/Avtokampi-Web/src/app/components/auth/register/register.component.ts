@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+    routerSubscription: any;
 
-  ngOnInit() {
-  }
+    constructor(private router: Router) { }
+
+    ngOnInit() {
+        this.recallJsFuntions();
+    }
+
+    recallJsFuntions() {
+        this.routerSubscription = this.router.events
+            .pipe(filter(event => event instanceof NavigationEnd))
+            .subscribe(event => {
+                $.getScript('assets/js/main.js');
+            });
+    }
+
+    ngOnDestroy() {
+        this.routerSubscription.unsubscribe();
+    }
 
 }
