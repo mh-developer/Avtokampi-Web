@@ -1,18 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpTokenInterceptor } from '../../services';
 
-import * as fromComponents from '../';
+import * as fromHomePage from '.';
+import { HomePageRoutingModule } from './home-page-routing.module';
+
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
-    // ...fromComponents.components
-  ],
-  declarations: []
+    declarations: [
+        fromHomePage.BlogSectionComponent,
+        fromHomePage.FactsCountersSectionComponent,
+        fromHomePage.FeaturedDestinationSectionComponent,
+        fromHomePage.HomePageComponent,
+        fromHomePage.NewsletterSectionComponent,
+        fromHomePage.PopularOffersSectionComponent,
+        fromHomePage.RestaurantsSectionComponent,
+        fromHomePage.SearchSectionComponent,
+        fromHomePage.ServicesSectionComponent,
+        fromHomePage.SpecialOffersSectionComponent,
+        fromHomePage.TestimonySectionComponent,
+    ],
+    imports: [
+        CommonModule,
+        HomePageRoutingModule
+    ]
 })
 export class HomePageModule { }
