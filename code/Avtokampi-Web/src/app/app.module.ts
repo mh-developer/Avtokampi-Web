@@ -10,13 +10,21 @@ import { ServicesModule } from './services/services.module';
 @NgModule({
     declarations: [
         AppComponent,
-        ...fromComponents.components
+        fromComponents.HeaderComponent,
+        fromComponents.FooterComponent,
+        fromComponents.PageNotFoundComponent,
+        fromComponents.UserProfileComponent,
+        fromComponents.MapComponent,
+        fromComponents.CampsListComponent,
+        fromComponents.CampCardComponent,
+        fromComponents.CampDetailsComponent,
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         ServicesModule,
-        fromComponents.HomePageModule
+        fromComponents.HomePageModule,
+        fromComponents.AuthModule,
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
