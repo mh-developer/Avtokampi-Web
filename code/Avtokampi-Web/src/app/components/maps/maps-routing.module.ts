@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import * as fromMaps from '.';
 
-const routes: Routes = [];
+const routes: Routes = [
+    {
+        path: 'maps',
+        component: fromMaps.MapComponent
+    }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

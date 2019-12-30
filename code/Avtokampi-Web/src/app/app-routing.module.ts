@@ -1,4 +1,3 @@
-import { components } from './components/index';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import * as fromComponents from './components';
@@ -13,6 +12,10 @@ const routes: Routes = [
     {
         path: 'camps',
         component: fromComponents.CampsListComponent
+    },
+    {
+        path: 'maps',
+        loadChildren: () => import(`./components`).then(m => m.MapsModule)
     },
     {
         path: 'auth',
