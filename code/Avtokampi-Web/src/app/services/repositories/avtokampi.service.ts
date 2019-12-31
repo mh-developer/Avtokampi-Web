@@ -1,4 +1,3 @@
-import { Avtokamp } from 'src/app/models';
 import { Injectable } from '@angular/core';
 import { Avtokamp, Slika, Cenik, Regija, Drzava } from '../../models';
 import { Response } from '../classes/apiresponse.class';
