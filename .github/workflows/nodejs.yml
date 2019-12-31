@@ -45,8 +45,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: mv /var/www/kampiraj.ga/html/github/workspace/code/Avtokampi-Web/Avtokampi-Web/* /var/www/kampiraj.ga/html/ && rm -rf /var/www/kampiraj.ga/html/github
-
+        script: mv /var/www/kampiraj.ga/html/github/workspace/code/Avtokampi-Web/* /var/www/kampiraj.ga/html/ && rm -rf /var/www/kampiraj.ga/html/github
 
     - name: npm install, build, and test
       uses: appleboy/ssh-action@master
