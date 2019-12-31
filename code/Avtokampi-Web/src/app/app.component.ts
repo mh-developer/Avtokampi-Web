@@ -9,16 +9,17 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent {
     title = 'Avtokampi';
+
     routerSubscription: any;
 
-    constructor(private router: Router) { }
+    constructor(private _router: Router) { }
 
     ngOnInit() {
         this.recallJsFuntions();
     }
 
     recallJsFuntions() {
-        this.routerSubscription = this.router.events
+        this.routerSubscription = this._router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe(event => {
                 $.getScript('assets/js/main.js');
@@ -28,4 +29,5 @@ export class AppComponent {
     ngOnDestroy() {
         this.routerSubscription.unsubscribe();
     }
+
 }

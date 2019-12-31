@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -9,24 +8,9 @@ import { filter } from 'rxjs/operators';
 })
 export class MapComponent implements OnInit {
 
-    routerSubscription: any;
-
-    constructor(private router: Router) { }
+    constructor(private _router: Router) { }
 
     ngOnInit() {
-        this.recallJsFuntions();
-    }
-
-    recallJsFuntions() {
-        this.routerSubscription = this.router.events
-            .pipe(filter(event => event instanceof NavigationEnd))
-            .subscribe(event => {
-                $.getScript('assets/js/main.js');
-            });
-    }
-
-    ngOnDestroy() {
-        this.routerSubscription.unsubscribe();
     }
 
 }

@@ -5,10 +5,13 @@ import { from } from 'rxjs';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: '/', pathMatch: 'full' },
+    {
+        path: '',
+        redirectTo: '/',
+        pathMatch: 'full'
+    },
     {
         path: 'home',
-        component: fromComponents.HomePageComponent,
         loadChildren: () => import(`./components`).then(m => m.HomePageModule)
     },
     {
