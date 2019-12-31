@@ -26,7 +26,7 @@ jobs:
         npm audit fix
         ng config -g cli.warnings.versionMismatch false
         npm install
-        ng build --prod
+        ng build --prod=false
 
     - name: Remove old Angular files
       uses: appleboy/ssh-action@master
