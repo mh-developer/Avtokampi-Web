@@ -19,15 +19,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: npm install, build, and test
-      run: |
-        cd code/Avtokampi-Web/
-        npm install -g @angular/cli
-        npm audit fix
-        ng config -g cli.warnings.versionMismatch false
-        npm install
-        ng build --prod
-
     - name: Remove old Angular files
       uses: appleboy/ssh-action@master
       with:
@@ -44,7 +35,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: "/home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web/dist/*"
+        source: "/home/runner/work/Avtokampi-Web/Avtokampi-Web/code/Avtokampi-Web/*"
         target: "/var/www/kampiraj.ga/html/"
         
     - name: Move builded files and folders
@@ -54,4 +45,20 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: mv /var/www/kampiraj.ga/html/github/workspace/code/Avtokampi-Web/dist/Avtokampi-Web/* /var/www/kampiraj.ga/html/ && rm -rf /var/www/kampiraj.ga/html/github
+        script: mv /var/www/kampiraj.ga/html/github/workspace/code/Avtokampi-Web/Avtokampi-Web/* /var/www/kampiraj.ga/html/ && rm -rf /var/www/kampiraj.ga/html/github
+
+
+    - name: npm install, build, and test
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /var/www/kampiraj.ga/html/
+          npm install -g @angular/cli
+          npm audit fix
+          ng config -g cli.warnings.versionMismatch false
+          npm install
+          ng serve
