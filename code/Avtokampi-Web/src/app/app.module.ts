@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import * as fromComponents from './components';
 import { ServicesModule } from './services/services.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -14,16 +15,15 @@ import { ServicesModule } from './services/services.module';
         fromComponents.FooterComponent,
         fromComponents.PageNotFoundComponent,
         fromComponents.UserProfileComponent,
-        fromComponents.CampsListComponent,
-        fromComponents.CampCardComponent,
-        fromComponents.CampDetailsComponent,
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         ServicesModule,
         fromComponents.HomePageModule,
         fromComponents.MapsModule,
         fromComponents.AuthModule,
+        fromComponents.CampsModule,
         AppRoutingModule,
     ],
     providers: [],

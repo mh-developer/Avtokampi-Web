@@ -1,78 +1,98 @@
+import { Avtokamp } from 'src/app/models';
 import { Injectable } from '@angular/core';
-import { Avtokamp } from '../../models';
+import { Avtokamp, Slika, Cenik, Regija, Drzava } from '../../models';
 import { Response } from '../classes/apiresponse.class';
+import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AvtokampiService {
 
-    static get(kamp_id: number): Response {
+    constructor(
+        private apiService: ApiService
+    ) { }
+
+    public get(kamp_id: number): Observable<Avtokamp> {
+        return this.apiService.get(`/Avtokampi/${kamp_id}`)
+                              .pipe(map(data => data));
+    }
+
+    public post(item: Avtokamp): Response {
         return new Response(0, 0);
     }
 
-    static post(item: Avtokamp): Response {
+    public delete(kamp_id: number): Response {
         return new Response(0, 0);
     }
 
-    static delete(kamp_id: number): Response {
+    public put(kamp_id: number): Response {
         return new Response(0, 0);
     }
 
-    static put(kamp_id: number): Response {
+    public getAll(): Observable<Avtokamp[]> {
+        return this.apiService.get('/Avtokampi')
+                              .pipe(map(data => data));
+    }
+
+    public getPaging(page: number, size: number): Observable<Avtokamp[]> {
+        return this.apiService.get(`/Avtokampi/Paging?PageNumber=${page}&PageSize=${size}`)
+                              .pipe(map(data => data));
+    }
+
+    public getSlike(kamp_id: number): Observable<Slika[]> {
+        return this.apiService.get(`/Avtokampi/${kamp_id}/slike`)
+                              .pipe(map(data => data));
+    }
+
+    public postSlike(kamp_id: number): Response {
+        return new Response(0, 0);
+
+    }
+
+    public postSlika(kamp_id: number): Response {
         return new Response(0, 0);
     }
 
-    static getAll(): Response {
+    public putSlika(slika_id: number): Response {
         return new Response(0, 0);
     }
 
-    static getSlike(kamp_id: number): Response {
+    public deleteSlika(slika_id: number): Response {
         return new Response(0, 0);
     }
 
-    static postSlike(kamp_id: number): Response {
-        return new Response(0, 0);
-
+    public getCeniki(kamp_id: number): Observable<Cenik[]> {
+        return this.apiService.get(`/Avtokampi/${kamp_id}/ceniki`)
+                              .pipe(map(data => data));
     }
 
-    static postSlika(kamp_id: number): Response {
-        return new Response(0, 0);
+    public getCenik(cenik_id: number): Observable<Cenik> {
+        return this.apiService.get(`/Avtokampi/${cenik_id}/cenik`)
+                              .pipe(map(data => data));
     }
 
-    static putSlika(slika_id: number): Response {
-        return new Response(0, 0);
-    }
-
-    static deleteSlika(slika_id: number): Response {
+    public putCenik(cenik_id: number): Response {
         return new Response(0, 0);
     }
 
-    static getCeniki(kamp_id: number): Response {
+    public postCenik(kamp_id: number): Response {
         return new Response(0, 0);
     }
 
-    static getCenik(cenik_id: number): Response {
+    public deleteCenik(cenik_id: number): Response {
         return new Response(0, 0);
     }
 
-    static putCenik(cenik_id: number): Response {
-        return new Response(0, 0);
+    public getRegije(): Observable<Regija[]> {
+        return this.apiService.get('/Avtokampi/regije')
+                              .pipe(map(data => data));
     }
 
-    static postCenik(kamp_id: number): Response {
-        return new Response(0, 0);
-    }
-
-    static deleteCenik(cenik_id: number): Response {
-        return new Response(0, 0);
-    }
-
-    static getRegije(): Response {
-        return new Response(0, 0);
-    }
-
-    static getDrzave(): Response {
-        return new Response(0, 0);
+    public getDrzave(): Observable<Drzava[]> {
+        return this.apiService.get('/Avtokampi/drzave')
+                              .pipe(map(data => data));
     }
 }

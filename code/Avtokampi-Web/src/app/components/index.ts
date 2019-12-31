@@ -43,3 +43,4 @@ export * from './home';
 export * from './home/home-page.module';
 export * from './maps/maps.module';
 export * from './auth/auth.module';
+export * from './camps/camps.module';

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AvtokampiService } from 'src/app/services';
+import { HttpClient } from '@angular/common/http';
+import { Avtokamp } from 'src/app/models';
 
 @Component({
   selector: 'app-special-offers-section',
@@ -6,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./special-offers-section.component.css']
 })
 export class SpecialOffersSectionComponent implements OnInit {
+    private camps: Avtokamp[];
 
-  constructor() { }
+    constructor(
+        private router: Router,
+        private avtokampiService: AvtokampiService,
+        private http: HttpClient
+    ) { }
 
   ngOnInit() {
+    this.avtokampiService.getPaging(1, 5).subscribe((camps: Avtokamp[]) => {
+        this.camps = camps;
+    });
   }
 
 }

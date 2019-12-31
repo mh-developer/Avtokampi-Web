@@ -16,7 +16,7 @@ const routes: Routes = [
     },
     {
         path: 'camps',
-        component: fromComponents.CampsListComponent
+        loadChildren: () => import(`./components`).then(m => m.CampsModule)
     },
     {
         path: 'maps',

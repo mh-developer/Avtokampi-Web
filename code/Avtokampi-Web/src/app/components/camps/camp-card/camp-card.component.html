@@ -1,1 +1,32 @@
-<p>camp-card works!</p>
+
+    <div class="destination">
+        <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
+            [style.background-image]="getImage(campImg?.slika)">
+            <div class="icon d-flex justify-content-center align-items-center">
+                <span class="icon-search2"></span>
+            </div>
+        </a>
+        <div class="text p-3">
+            <div class="d-flex">
+                <div class="one">
+                    <!-- <img [src]="getImage(campImg?.slika)" alt=""> -->
+                    <h3><a href="#">{{ camp?.naziv }}</a></h3>
+                    <p class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <!-- <span>8 Rating</span> -->
+                    </p>
+                </div>
+            </div>
+            <p>{{ (camp?.opis | slice:0:100) + '...' }}</p>
+            <!-- <p class="days"><span>2 days 3 nights</span></p> -->
+            <hr>
+            <p class="bottom-area d-flex">
+                <span><i class="icon-map-o"></i> {{ camp?.nazivLokacije }}</span>
+                <span class="ml-auto"><a href="#">Razišči</a></span>
+            </p>
+        </div>
+    </div>

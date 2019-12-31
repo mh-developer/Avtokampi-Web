@@ -1,5 +1,5 @@
 interface AvtokampiModel {
-    id: number;
+    avtokampId: number;
     naziv: string;
     opis: string;
     naslov: string;
@@ -14,7 +14,7 @@ interface AvtokampiModel {
 }
 
 export class Avtokamp implements AvtokampiModel {
-    private _id: number;
+    private _avtokampId: number;
     private _naziv: string;
     private _opis: string;
     private _naslov: string;
@@ -27,12 +27,12 @@ export class Avtokamp implements AvtokampiModel {
     private _created_at: Date;
     private _updated_at: Date;
 
-    get id(): number {
-      return this._id;
+    get avtokampId(): number {
+      return this._avtokampId;
     }
 
     set id(value: number) {
-      this._id = value;
+      this._avtokampId = value;
     }
 
     get naziv(): string {
