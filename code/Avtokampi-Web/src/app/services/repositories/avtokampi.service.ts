@@ -16,7 +16,7 @@ export class AvtokampiService {
 
     public get(kamp_id: number): Observable<Avtokamp> {
         return this.apiService.get(`/Avtokampi/${kamp_id}`)
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 
     public post(item: Avtokamp): Response {
@@ -33,17 +33,17 @@ export class AvtokampiService {
 
     public getAll(): Observable<Avtokamp[]> {
         return this.apiService.get('/Avtokampi')
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 
     public getPaging(page: number, size: number): Observable<Avtokamp[]> {
         return this.apiService.get(`/Avtokampi/Paging?PageNumber=${page}&PageSize=${size}`)
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 
     public getSlike(kamp_id: number): Observable<Slika[]> {
         return this.apiService.get(`/Avtokampi/${kamp_id}/slike`)
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 
     public postSlike(kamp_id: number): Response {
@@ -65,12 +65,12 @@ export class AvtokampiService {
 
     public getCeniki(kamp_id: number): Observable<Cenik[]> {
         return this.apiService.get(`/Avtokampi/${kamp_id}/ceniki`)
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 
     public getCenik(cenik_id: number): Observable<Cenik> {
         return this.apiService.get(`/Avtokampi/${cenik_id}/cenik`)
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 
     public putCenik(cenik_id: number): Response {
@@ -87,11 +87,11 @@ export class AvtokampiService {
 
     public getRegije(): Observable<Regija[]> {
         return this.apiService.get('/Avtokampi/regije')
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 
     public getDrzave(): Observable<Drzava[]> {
         return this.apiService.get('/Avtokampi/drzave')
-                              .pipe(map(data => data));
+            .pipe(map(data => data));
     }
 }

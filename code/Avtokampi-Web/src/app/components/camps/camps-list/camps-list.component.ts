@@ -1,8 +1,8 @@
+import { Avtokamp } from './../../../models';
 import { Component, OnInit } from '@angular/core';
 import { AvtokampiService } from '../../../services';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Avtokamp } from 'src/app/models';
 
 @Component({
     selector: 'app-camps-list',
@@ -10,7 +10,7 @@ import { Avtokamp } from 'src/app/models';
     styleUrls: ['./camps-list.component.css']
 })
 export class CampsListComponent implements OnInit {
-    private camps;
+    camps: Avtokamp[];
 
     constructor(
         private router: Router,

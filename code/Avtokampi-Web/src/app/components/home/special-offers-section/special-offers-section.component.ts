@@ -10,7 +10,7 @@ import { Avtokamp } from 'src/app/models';
   styleUrls: ['./special-offers-section.component.css']
 })
 export class SpecialOffersSectionComponent implements OnInit {
-    private camps: Avtokamp[];
+    camps: Avtokamp[];
 
     constructor(
         private router: Router,

@@ -20,7 +20,6 @@ import { CampCardComponent } from '../camps/camp-card';
         fromHomePage.ServicesSectionComponent,
         fromHomePage.SpecialOffersSectionComponent,
         fromHomePage.TestimonySectionComponent,
-        // CampCardComponent
     ],
     imports: [
         CommonModule,

@@ -4,7 +4,7 @@ interface AvtokampiModel {
     opis: string;
     naslov: string;
     telefon: string;
-    naziv_lokacije: string;
+    nazivLokacije: string;
     koord_x: number;
     koord_y: number;
     is_active: boolean;
@@ -19,7 +19,7 @@ export class Avtokamp implements AvtokampiModel {
     private _opis: string;
     private _naslov: string;
     private _telefon: string;
-    private _naziv_lokacije: string;
+    private _nazivLokacije: string;
     private _koord_x: number;
     private _koord_y: number;
     private _is_active: boolean;
@@ -67,12 +67,12 @@ export class Avtokamp implements AvtokampiModel {
       this._telefon = value;
     }
 
-    get naziv_lokacije(): string {
-      return this._naziv_lokacije;
+    get nazivLokacije(): string {
+      return this._nazivLokacije;
     }
 
-    set naziv_lokacije(value: string) {
-      this._naziv_lokacije = value;
+    set nazivLokacije(value: string) {
+      this._nazivLokacije = value;
     }
 
     get koord_x(): number {

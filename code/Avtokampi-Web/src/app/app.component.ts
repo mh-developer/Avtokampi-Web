@@ -12,14 +12,16 @@ export class AppComponent {
 
     routerSubscription: any;
 
-    constructor(private _router: Router) { }
+    constructor(
+        private router: Router
+    ) { }
 
     ngOnInit() {
         this.recallJsFuntions();
     }
 
     recallJsFuntions() {
-        this.routerSubscription = this._router.events
+        this.routerSubscription = this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe(event => {
                 $.getScript('assets/js/main.js');

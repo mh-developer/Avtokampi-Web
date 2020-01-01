@@ -1,9 +1,7 @@
-import { Slika } from './../../../models/slike.model';
-import { Pravica } from './../../../models/pravice.model';
-import { Avtokamp } from 'src/app/models';
+import { Slika, Avtokamp } from './../../../models';
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { AvtokampiService } from 'src/app/services';
+import { Router, NavigationEnd } from '@angular/router';
+import { AvtokampiService } from '../../../services';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -15,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CampCardComponent implements OnInit {
 
     @Input() camp: Avtokamp;
-    private campImg: Slika;
+    campImg: Slika;
 
     constructor(
         private router: Router,
@@ -32,7 +30,7 @@ export class CampCardComponent implements OnInit {
 
     getImage(image: any) {
         const preparedImg = image ? this.domSanitizer.bypassSecurityTrustStyle(`url('data:image/jpg;base64,${image}')`) :
-                                    `url('assets/images/destination-1.jpg')`;
+            `url('assets/images/destination-1.jpg')`;
         return preparedImg;
     }
 
