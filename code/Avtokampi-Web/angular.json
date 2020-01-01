@@ -90,8 +90,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Avtokampi-Web:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "browserTarget": "Avtokampi-Web:build"
           },
           "configurations": {
             "production": {

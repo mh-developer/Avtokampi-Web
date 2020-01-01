@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://kampiraj.ga/api'
+  api_url: 'https://api.kampiraj.ga/api'
 };
 
 /*
