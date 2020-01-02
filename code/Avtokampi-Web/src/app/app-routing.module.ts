@@ -23,7 +23,7 @@ const routes: Routes = [
     },
     {
         path: 'reservations',
-        loadChildren: () => import(`./components`).then(m => m.ReservationComponent)
+        loadChildren: () => import(`./components`).then(m => m.ReservationsModule)
     },
     {
         path: 'auth',
