@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import * as fromHomePage from '.';
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { CampsModule } from '../camps/camps.module';
-import { CampCardComponent } from '../camps/camp-card';
 
 
 @NgModule({

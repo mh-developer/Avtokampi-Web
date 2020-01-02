@@ -3,10 +3,15 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import * as fromServices from '.';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: fromServices.HttpTokenInterceptor, multi: true },
@@ -17,8 +22,17 @@ import * as fromServices from '.';
     fromServices.AvtokampiService,
     fromServices.KampirnaMestaService,
     fromServices.RezervacijeService,
-    fromServices.StoritveKampaService
+    fromServices.StoritveKampaService,
+    fromServices.NoAuthGuard,
   ],
-  declarations: []
+  declarations: [
+    fromServices.ShowAuthedDirective
+  ],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    fromServices.ShowAuthedDirective,
+  ]
 })
 export class ServicesModule { }

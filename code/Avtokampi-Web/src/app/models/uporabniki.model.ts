@@ -1,28 +1,28 @@
 interface UporabnikInterface {
-    id: number;
+    uporabnikId: number;
     ime: string;
     priimek: string;
     slika: Blob;
     telefon: string;
     email: string;
-    geslo: string;
     pravice: number;
     created_at: Date;
     updated_at: Date;
+    token: string;
 }
 
 export class Uporabnik implements UporabnikInterface{
 
-    private _id: number;
+    private _uporabnikId: number;
     private _ime: string;
     private _priimek: string;
     private _slika: Blob;
     private _telefon: string;
     private _email: string;
-    private _geslo: string;
     private _pravice: number;
     private _created_at: Date;
     private _updated_at: Date;
+    private _token: string;
 
   get created_at(): Date {
     return this._created_at;
@@ -40,12 +40,12 @@ export class Uporabnik implements UporabnikInterface{
     this._updated_at = value;
   }
 
-  get id(): number {
-      return this._id;
+  get uporabnikId(): number {
+      return this._uporabnikId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set uporabnikId(value: number) {
+      this._uporabnikId = value;
     }
 
     get ime(): string {
@@ -88,19 +88,19 @@ export class Uporabnik implements UporabnikInterface{
       this._email = value;
     }
 
-    get geslo(): string {
-      return this._geslo;
-    }
-
-    set geslo(value: string) {
-      this._geslo = value;
-    }
-
     get pravice(): number {
       return this._pravice;
     }
 
     set pravice(value: number) {
       this._pravice = value;
+    }
+
+    get token(): string {
+      return this._token;
+    }
+
+    set token(value: string) {
+      this._token = value;
     }
 }

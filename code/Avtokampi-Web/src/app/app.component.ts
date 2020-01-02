@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { UserService } from './services';
 
 @Component({
     selector: 'app-root',
@@ -13,11 +14,13 @@ export class AppComponent {
     routerSubscription: any;
 
     constructor(
-        private router: Router
+        private router: Router,
+        private userService: UserService
     ) { }
 
     ngOnInit() {
         this.recallJsFuntions();
+        this.userService.populate();
     }
 
     recallJsFuntions() {
