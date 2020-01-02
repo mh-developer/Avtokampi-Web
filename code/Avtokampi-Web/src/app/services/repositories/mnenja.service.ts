@@ -29,15 +29,18 @@ export class MnenjaService {
             .pipe(map(data => data));
     }
 
-    public post(kamp_id: number, item: Mnenje): Response {
-        return new Response(0, 0);
+    public post(kamp_id: number, item: Mnenje): Observable<boolean> {
+        return this.apiService.post(`/Uporabniki/${kamp_id}/mnenje`, item)
+            .pipe(map(data => data));
     }
 
-    public put(mnenje_id: number): Response {
-        return new Response(0, 0);
+    public put(mnenje_id: number, item: Mnenje): Observable<boolean> {
+        return this.apiService.put(`/Uporabniki/${mnenje_id}/mnenje`, item)
+            .pipe(map(data => data));
     }
 
-    public delete(mnenje_id: number): Response {
-        return new Response(0, 0);
+    public delete(mnenje_id: number): Observable<boolean> {
+        return this.apiService.delete(`/Uporabniki/${mnenje_id}/mnenje`)
+            .pipe(map(data => data));
     }
 }

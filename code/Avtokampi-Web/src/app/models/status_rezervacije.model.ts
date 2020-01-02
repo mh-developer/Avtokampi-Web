@@ -1,18 +1,18 @@
 interface Status_rezervacijeModel {
-    id: number;
+    statusRezervacijeId: number;
     naziv: string;
 }
 
 export class StatusRezervacije implements Status_rezervacijeModel{
-    private _id: number;
+    private _statusRezervacijeId: number;
     private _naziv: string;
 
-    get id(): number {
-      return this._id;
+    get statusRezervacijeId(): number {
+      return this._statusRezervacijeId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set statusRezervacijeId(value: number) {
+      this._statusRezervacijeId = value;
     }
 
     get naziv(): string {

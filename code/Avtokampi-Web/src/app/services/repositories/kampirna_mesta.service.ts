@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Response } from '../classes/apiresponse.class';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { KampirnoMesto } from '../../models';
+import { KampirnoMesto, Kategorija } from '../../models';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -24,19 +24,23 @@ export class KampirnaMestaService {
             .pipe(map(data => data));
     }
 
-    public post(kamp_id: number, item: KampirnoMesto): Response {
-        return new Response(0, 0);
+    public post(kamp_id: number, item: KampirnoMesto): Observable<boolean> {
+        return this.apiService.post(`/KampirnaMesta/${kamp_id}`, item)
+            .pipe(map(data => data));
     }
 
-    public delete(kamp_id: number, kamp_mesto_id: number): Response {
-        return new Response(0, 0);
+    public delete(kamp_id: number, kamp_mesto_id: number): Observable<boolean> {
+        return this.apiService.delete(`/KampirnaMesta/${kamp_id}/${kamp_mesto_id}`)
+            .pipe(map(data => data));
     }
 
-    public put(kamp_id: number, kamp_mesto_id: number): Response {
-        return new Response(0, 0);
+    public put(kamp_id: number, kamp_mesto_id: number, item: KampirnoMesto): Observable<boolean> {
+        return this.apiService.put(`/KampirnaMesta/${kamp_id}/${kamp_mesto_id}`, item)
+            .pipe(map(data => data));
     }
 
-    public getKategorije(): Response {
-        return new Response(0, 0);
+    public getKategorije(): Observable<Kategorija> {
+        return this.apiService.get(`/api/KampirnaMesta/kategorije`)
+            .pipe(map(data => data));
     }
 }

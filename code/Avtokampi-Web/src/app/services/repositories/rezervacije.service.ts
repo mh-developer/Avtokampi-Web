@@ -1,37 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Rezervacija } from '../../models';
-import { Response } from '../classes/apiresponse.class';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Response } from './../classes/apiresponse.class';
+import { ApiService } from './api.service';
+import { Rezervacija, VrstaKampiranja, StatusRezervacije } from '../../models';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RezervacijeService {
 
-    static getUserReservations(user_id: number): Response {
-        return new Response(0, 0);
+    constructor(
+        private apiService: ApiService
+    ) { }
+
+    public getUserReservations(user_id: number): Observable<Rezervacija[]> {
+        return this.apiService.get(`/Rezervacije/${user_id}/uporabnik`)
+            .pipe(map(data => data));
     }
 
-    static get(rez_id: number): Response {
-        return new Response(0, 0);
+    public get(rez_id: number): Observable<Rezervacija> {
+        return this.apiService.get(`/Rezervacije/${rez_id}`)
+            .pipe(map(data => data));
     }
 
-    static put(rez_id: number): Response {
-        return new Response(0, 0);
+    public put(rez_id: number, item: Rezervacija): Observable<boolean> {
+        return this.apiService.put(`/Rezervacije/${rez_id}`, item)
+            .pipe(map(data => data));
     }
 
-    static delete(rez_id: number): Response {
-        return new Response(0, 0);
+    public delete(rez_id: number): Observable<boolean> {
+        return this.apiService.delete(`/Rezervacije/${rez_id}`)
+            .pipe(map(data => data));
     }
 
-    static post(item: Rezervacija): Response {
-        return new Response(0, 0);
+    public post(item: Rezervacija): Observable<boolean> {
+        return this.apiService.post(`/Rezervacije`, item)
+            .pipe(map(data => data));
     }
 
-    static getVrsteKampiranja(): Response {
-        return new Response(0, 0);
+    public getVrsteKampiranja(): Observable<VrstaKampiranja[]> {
+        return this.apiService.get(`/Rezervacije/vrsta_kampiranja`)
+            .pipe(map(data => data));
     }
 
-    static getStatus(): Response {
-        return new Response(0, 0);
+    public getStatus(): Observable<StatusRezervacije[]> {
+        return this.apiService.get(`/Rezervacije/status`)
+            .pipe(map(data => data));
     }
 }

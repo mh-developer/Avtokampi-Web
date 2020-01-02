@@ -1,20 +1,20 @@
 interface PraviceModel {
-    id: number;
+    pravicaId: number;
     naziv: string;
     opis: string;
 }
 
 export class Pravica implements PraviceModel {
-    private _id: number;
+    private _pravicaId: number;
     private _naziv: string;
     private _opis: string;
 
-    get id(): number {
-      return this._id;
+    get pravicaId(): number {
+      return this._pravicaId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set pravicaId(value: number) {
+      this._pravicaId = value;
     }
 
     get naziv(): string {

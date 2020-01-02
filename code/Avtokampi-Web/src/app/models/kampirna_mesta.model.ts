@@ -1,45 +1,45 @@
 interface Kampirna_mestaModel {
-    id: number;
+    kampirnoMestoId: number;
     naziv: string;
     velikost: string;
     avtokamp: number;
     kategorija: number;
-    created_at: Date;
-    updated_at: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 export class KampirnoMesto implements Kampirna_mestaModel{
 
-    private _id: number;
+    private _kampirnoMestoId: number;
     private _naziv: string;
     private _velikost: string;
     private _avtokamp: number;
     private _kategorija: number;
-    private _created_at: Date;
-    private _updated_at: Date;
+    private _createdAt: Date;
+    private _updatedAt: Date;
 
-    get created_at(): Date {
-      return this._created_at;
+    get createdAt(): Date {
+      return this._createdAt;
     }
 
-    set created_at(value: Date) {
-      this._created_at = value;
+    set createdAt(value: Date) {
+      this._createdAt = value;
     }
 
-    get updated_at(): Date {
-      return this._updated_at;
+    get updatedAt(): Date {
+      return this._updatedAt;
     }
 
-    set updated_at(value: Date) {
-      this._updated_at = value;
+    set updatedAt(value: Date) {
+      this._updatedAt = value;
     }
 
-    get id(): number {
-      return this._id;
+    get kampirnoMestoId(): number {
+      return this._kampirnoMestoId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set kampirnoMestoId(value: number) {
+      this._kampirnoMestoId = value;
     }
 
     get naziv(): string {

@@ -1,20 +1,20 @@
 interface RegijeModel {
-    id: number;
+    regijaId: number;
     naziv: string;
     drzava: number;
 }
 
 export class Regija implements RegijeModel {
-    private _id: number;
+    private _regijaId: number;
     private _naziv: string;
     private _drzava: number;
 
-    get id(): number {
-      return this._id;
+    get regijaId(): number {
+      return this._regijaId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set regijaId(value: number) {
+      this._regijaId = value;
     }
 
     get naziv(): string {

@@ -1,56 +1,56 @@
 interface SlikeModel {
-    id: number;
+    slikaId: number;
     slika: Blob;
     avtokamp: number;
-  created_at: Date;
-  updated_at: Date;
+    createdAt: Date;
+    updated: Date;
 }
 
 export class Slika implements SlikeModel {
-    private _id: number;
+    private _slikaId: number;
     private _slika: Blob;
     private _avtokamp: number;
-  private _created_at: Date;
-  private _updated_at: Date;
+    private _createdAt: Date;
+    private _updated: Date;
 
 
-  get created_at(): Date {
-    return this._created_at;
-  }
-
-  set created_at(value: Date) {
-    this._created_at = value;
-  }
-
-  get updated_at(): Date {
-    return this._updated_at;
-  }
-
-  set updated_at(value: Date) {
-    this._updated_at = value;
-  }
-
-  get id(): number {
-      return this._id;
+    get createdAt(): Date {
+        return this._createdAt;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set createdAt(value: Date) {
+        this._createdAt = value;
+    }
+
+    get updated(): Date {
+        return this._updated;
+    }
+
+    set updated(value: Date) {
+        this._updated = value;
+    }
+
+    get slikaId(): number {
+        return this._slikaId;
+    }
+
+    set slikaId(value: number) {
+        this._slikaId = value;
     }
 
     get slika(): Blob {
-      return this._slika;
+        return this._slika;
     }
 
     set slika(value: Blob) {
-      this._slika = value;
+        this._slika = value;
     }
 
     get avtokamp(): number {
-      return this._avtokamp;
+        return this._avtokamp;
     }
 
     set avtokamp(value: number) {
-      this._avtokamp = value;
+        this._avtokamp = value;
     }
 }

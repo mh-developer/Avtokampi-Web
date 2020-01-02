@@ -6,8 +6,8 @@ interface UporabnikInterface {
     telefon: string;
     email: string;
     pravice: number;
-    created_at: Date;
-    updated_at: Date;
+    createdAt: Date;
+    updatedAt: Date;
     token: string;
 }
 
@@ -20,24 +20,24 @@ export class Uporabnik implements UporabnikInterface{
     private _telefon: string;
     private _email: string;
     private _pravice: number;
-    private _created_at: Date;
-    private _updated_at: Date;
+    private _createdAt: Date;
+    private _updatedAt: Date;
     private _token: string;
 
-  get created_at(): Date {
-    return this._created_at;
+  get createdAt(): Date {
+    return this._createdAt;
   }
 
-  set created_at(value: Date) {
-    this._created_at = value;
+  set createdAt(value: Date) {
+    this._createdAt = value;
   }
 
-  get updated_at(): Date {
-    return this._updated_at;
+  get updatedAt(): Date {
+    return this._updatedAt;
   }
 
-  set updated_at(value: Date) {
-    this._updated_at = value;
+  set updatedAt(value: Date) {
+    this._updatedAt = value;
   }
 
   get uporabnikId(): number {

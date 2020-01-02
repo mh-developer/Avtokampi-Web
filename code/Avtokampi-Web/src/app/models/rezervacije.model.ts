@@ -1,106 +1,106 @@
-interface RezervacijeModel {
-    id: number;
-    od: Date;
-    do: Date;
+interface RezervacijeMtrajanjeOdel {
+    rezervacijaId: number;
+    trajanjeOd: Date;
+    trajanjeDo: Date;
     uporabnik: number;
     avtokamp: number;
-    kampirno_mesto: number;
-    vrsta_kampiranja: number;
-    status: number;
-  created_at: Date;
-  updated_at: Date;
+    kampirnoMesto: number;
+    vrstaKampiranja: number;
+    statusRezervacije: number;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
-export class Rezervacija implements RezervacijeModel {
-    private _id: number;
-    private _od: Date;
-    private _do: Date;
+export class Rezervacija implements RezervacijeMtrajanjeOdel {
+    private _rezervacijaId: number;
+    private _trajanjeOd: Date;
+    private _trajanjeDo: Date;
     private _uporabnik: number;
     private _avtokamp: number;
-    private _kampirno_mesto: number;
-    private _vrsta_kampiranja: number;
-    private _status: number;
-  private _created_at: Date;
-  private _updated_at: Date;
+    private _kampirnoMesto: number;
+    private _vrstaKampiranja: number;
+    private _statusRezervacije: number;
+    private _createdAt: Date;
+    private _updatedAt: Date;
 
 
-  get created_at(): Date {
-    return this._created_at;
-  }
-
-  set created_at(value: Date) {
-    this._created_at = value;
-  }
-
-  get updated_at(): Date {
-    return this._updated_at;
-  }
-
-  set updated_at(value: Date) {
-    this._updated_at = value;
-  }
-
-  get id(): number {
-      return this._id;
+    get createdAt(): Date {
+        return this._createdAt;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set createdAt(value: Date) {
+        this._createdAt = value;
     }
 
-    get od(): Date {
-      return this._od;
+    get updatedAt(): Date {
+        return this._updatedAt;
     }
 
-    set od(value: Date) {
-      this._od = value;
+    set updatedAt(value: Date) {
+        this._updatedAt = value;
     }
 
-    get do(): Date {
-      return this._do;
+    get rezervacijaId(): number {
+        return this._rezervacijaId;
     }
 
-    set do(value: Date) {
-      this._do = value;
+    set rezervacijaId(value: number) {
+        this._rezervacijaId = value;
+    }
+
+    get trajanjeOd(): Date {
+        return this._trajanjeOd;
+    }
+
+    set trajanjeOd(value: Date) {
+        this._trajanjeOd = value;
+    }
+
+    get trajanjeDo(): Date {
+        return this._trajanjeDo;
+    }
+
+    set trajanjeDo(value: Date) {
+        this._trajanjeDo = value;
     }
 
     get uporabnik(): number {
-      return this._uporabnik;
+        return this._uporabnik;
     }
 
     set uporabnik(value: number) {
-      this._uporabnik = value;
+        this._uporabnik = value;
     }
 
     get avtokamp(): number {
-      return this._avtokamp;
+        return this._avtokamp;
     }
 
     set avtokamp(value: number) {
-      this._avtokamp = value;
+        this._avtokamp = value;
     }
 
-    get kampirno_mesto(): number {
-      return this._kampirno_mesto;
+    get kampirnoMesto(): number {
+        return this._kampirnoMesto;
     }
 
-    set kampirno_mesto(value: number) {
-      this._kampirno_mesto = value;
+    set kampirnoMesto(value: number) {
+        this._kampirnoMesto = value;
     }
 
-    get vrsta_kampiranja(): number {
-      return this._vrsta_kampiranja;
+    get vrstaKampiranja(): number {
+        return this._vrstaKampiranja;
     }
 
-    set vrsta_kampiranja(value: number) {
-      this._vrsta_kampiranja = value;
+    set vrstaKampiranja(value: number) {
+        this._vrstaKampiranja = value;
     }
 
-    get status(): number {
-      return this._status;
+    get statusRezervacije(): number {
+        return this._statusRezervacije;
     }
 
-    set status(value: number) {
-      this._status = value;
+    set statusRezervacije(value: number) {
+        this._statusRezervacije = value;
     }
 }

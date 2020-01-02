@@ -1,18 +1,18 @@
 interface Vrsta_kampiranjaModel {
-  id: number;
+  vrstaKampiranjaId: number;
   naziv: string;
 }
 
 export class VrstaKampiranja implements Vrsta_kampiranjaModel {
-    private _id: number;
+    private _vrstaKampiranjaId: number;
     private _naziv: string;
 
-    get id(): number {
-      return this._id;
+    get vrstaKampiranjaId(): number {
+      return this._vrstaKampiranjaId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set vrstaKampiranjaId(value: number) {
+      this._vrstaKampiranjaId = value;
     }
 
     get naziv(): string {

@@ -1,29 +1,29 @@
 interface Storitve_kampirnih_mestModel {
-    id: number;
-    kampirno_mesto: number;
+    storitveKampirnihMestId: number;
+    kampirnoMesto: number;
     storitev: number;
 }
 
 export class StoritevKampirnihMest implements Storitve_kampirnih_mestModel {
-    private _id: number;
-    private _kampirno_mesto: number;
+    private _storitveKampirnihMestId: number;
+    private _kampirnoMesto: number;
     private _storitev: number;
 
 
-    get id(): number {
-      return this._id;
+    get storitveKampirnihMestId(): number {
+      return this._storitveKampirnihMestId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set storitveKampirnihMestId(value: number) {
+      this._storitveKampirnihMestId = value;
     }
 
-    get kampirno_mesto(): number {
-      return this._kampirno_mesto;
+    get kampirnoMesto(): number {
+      return this._kampirnoMesto;
     }
 
-    set kampirno_mesto(value: number) {
-      this._kampirno_mesto = value;
+    set kampirnoMesto(value: number) {
+      this._kampirnoMesto = value;
     }
 
     get storitev(): number {

@@ -1,18 +1,18 @@
 interface Kategorije_storitevModel {
-    id: number;
+    kategorijaStoritveId: number;
     naziv: string;
 }
 
 export class KategorijeStoritev implements Kategorije_storitevModel {
-    private _id: number;
+    private _kategorijaStoritveId: number;
     private _naziv: string;
 
-    get id(): number {
-      return this._id;
+    get kategorijaStoritveId(): number {
+      return this._kategorijaStoritveId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set kategorijaStoritveId(value: number) {
+      this._kategorijaStoritveId = value;
     }
 
     get naziv(): string {

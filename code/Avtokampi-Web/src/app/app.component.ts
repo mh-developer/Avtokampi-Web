@@ -23,6 +23,10 @@ export class AppComponent {
         this.userService.populate();
     }
 
+    ngOnDestroy() {
+        this.routerSubscription.unsubscribe();
+    }
+
     recallJsFuntions() {
         this.routerSubscription = this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
@@ -30,10 +34,6 @@ export class AppComponent {
                 $.getScript('assets/js/main.js');
                 window.scrollTo(0, 0);
             });
-    }
-
-    ngOnDestroy() {
-        this.routerSubscription.unsubscribe();
     }
 
 }

@@ -7,10 +7,10 @@ interface AvtokampiModel {
     nazivLokacije: string;
     koordinataX: number;
     koordinataY: number;
-    is_active: boolean;
+    isactive: boolean;
     regija: number;
-    created_at: Date;
-    updated_at: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 export class Avtokamp implements AvtokampiModel {
@@ -22,10 +22,10 @@ export class Avtokamp implements AvtokampiModel {
     private _nazivLokacije: string;
     private _koordinataX: number;
     private _koordinataY: number;
-    private _is_active: boolean;
+    private _isactive: boolean;
     private _regija: number;
-    private _created_at: Date;
-    private _updated_at: Date;
+    private _createdAt: Date;
+    private _updatedAt: Date;
 
     get avtokampId(): number {
       return this._avtokampId;
@@ -91,12 +91,12 @@ export class Avtokamp implements AvtokampiModel {
       this._koordinataY = value;
     }
 
-    get is_active(): boolean {
-      return this._is_active;
+    get isactive(): boolean {
+      return this._isactive;
     }
 
-    set is_active(value: boolean) {
-      this._is_active = value;
+    set isactive(value: boolean) {
+      this._isactive = value;
     }
 
     get regija(): number {
@@ -107,19 +107,19 @@ export class Avtokamp implements AvtokampiModel {
       this._regija = value;
     }
 
-    get created_at(): Date {
-      return this._created_at;
+    get createdAt(): Date {
+      return this._createdAt;
     }
 
-    set created_at(value: Date) {
-      this._created_at = value;
+    set createdAt(value: Date) {
+      this._createdAt = value;
     }
 
-    get updated_at(): Date {
-      return this._updated_at;
+    get updatedAt(): Date {
+      return this._updatedAt;
     }
 
-    set updated_at(value: Date) {
-      this._updated_at = value;
+    set updatedAt(value: Date) {
+      this._updatedAt = value;
   }
 }

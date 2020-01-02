@@ -1,18 +1,18 @@
 interface DrzaveModel {
-    id: number;
+    drzavaId: number;
     naziv: string;
 }
 
 export class Drzava implements DrzaveModel {
-    private _id: number;
+    private _drzavaId: number;
     private _naziv: string;
 
-    get id(): number {
-      return this._id;
+    get drzavaId(): number {
+      return this._drzavaId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set drzavaId(value: number) {
+      this._drzavaId = value;
     }
 
     get naziv(): string {
