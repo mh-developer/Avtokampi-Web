@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import * as fromComponents from './components';
-import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -21,6 +20,10 @@ const routes: Routes = [
     {
         path: 'maps',
         loadChildren: () => import(`./components`).then(m => m.MapsModule)
+    },
+    {
+        path: 'reservations',
+        loadChildren: () => import(`./components`).then(m => m.ReservationComponent)
     },
     {
         path: 'auth',

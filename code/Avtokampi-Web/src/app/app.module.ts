@@ -26,6 +26,7 @@ import { ServicesModule } from './services/services.module';
         fromComponents.MapsModule,
         fromComponents.AuthModule,
         fromComponents.CampsModule,
+        fromComponents.ReservationsModule,
         AppRoutingModule,
     ],
     providers: [],

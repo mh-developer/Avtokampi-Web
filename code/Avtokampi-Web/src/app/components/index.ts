@@ -5,9 +5,11 @@ import { UserProfileComponent } from './user-profile';
 import { HeaderComponent, FooterComponent } from './layout';
 import { PageNotFoundComponent } from './page-not-found';
 import { MapComponent } from './maps';
+import { ReservationComponent } from './reservations';
 
 
 export const components: any[] = [
+    ReservationComponent,
     MapComponent,
     CampsListComponent,
     CampDetailsComponent,
@@ -32,6 +34,7 @@ export const components: any[] = [
 ];
 
 export * from './maps';
+export * from './reservations';
 export * from './camps';
 export * from './auth';
 export * from './user-profile';
@@ -44,3 +47,4 @@ export * from './home/home-page.module';
 export * from './maps/maps.module';
 export * from './auth/auth.module';
 export * from './camps/camps.module';
+export * from './reservations/reservations.module';
