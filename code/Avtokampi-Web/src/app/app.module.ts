@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import * as fromComponents from './components';
 import { ServicesModule } from './services/services.module';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     imports: [
         BrowserModule,
+        LazyLoadImageModule,
         HttpClientModule,
         ServicesModule,
         fromComponents.HomePageModule,

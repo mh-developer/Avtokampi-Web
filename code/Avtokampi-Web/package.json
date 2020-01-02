@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.7",
     "@auth0/angular-jwt": "^3.0.1",
     "@types/jquery": "^3.3.31",
+    "ng-lazyload-image": "^7.0.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
