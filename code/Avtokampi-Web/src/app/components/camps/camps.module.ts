@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import * as fromCamps from '.';
 import { CampsRoutingModule } from './camps-routing.module';
+import { MapsModule } from '../maps/maps.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CampsRoutingModule } from './camps-routing.module';
     ],
     imports: [
         CommonModule,
-        CampsRoutingModule
+        CampsRoutingModule,
+        MapsModule
     ],
     exports: [
         fromCamps.CampCardComponent,

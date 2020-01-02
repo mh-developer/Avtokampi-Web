@@ -5,8 +5,8 @@ interface AvtokampiModel {
     naslov: string;
     telefon: string;
     nazivLokacije: string;
-    koord_x: number;
-    koord_y: number;
+    koordinataX: number;
+    koordinataY: number;
     is_active: boolean;
     regija: number;
     created_at: Date;
@@ -20,8 +20,8 @@ export class Avtokamp implements AvtokampiModel {
     private _naslov: string;
     private _telefon: string;
     private _nazivLokacije: string;
-    private _koord_x: number;
-    private _koord_y: number;
+    private _koordinataX: number;
+    private _koordinataY: number;
     private _is_active: boolean;
     private _regija: number;
     private _created_at: Date;
@@ -31,7 +31,7 @@ export class Avtokamp implements AvtokampiModel {
       return this._avtokampId;
     }
 
-    set id(value: number) {
+    set avtokampId(value: number) {
       this._avtokampId = value;
     }
 
@@ -75,20 +75,20 @@ export class Avtokamp implements AvtokampiModel {
       this._nazivLokacije = value;
     }
 
-    get koord_x(): number {
-      return this._koord_x;
+    get koordinataX(): number {
+      return this._koordinataX;
     }
 
-    set koord_x(value: number) {
-      this._koord_x = value;
+    set koordinataX(value: number) {
+      this._koordinataX = value;
     }
 
-    get koord_y(): number {
-      return this._koord_y;
+    get koordinataY(): number {
+      return this._koordinataY;
     }
 
-    set koord_y(value: number) {
-      this._koord_y = value;
+    set koordinataY(value: number) {
+      this._koordinataY = value;
     }
 
     get is_active(): boolean {

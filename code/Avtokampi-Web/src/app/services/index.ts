@@ -5,9 +5,10 @@ export const services: any[] = [
   fromRepos.KampirnaMestaService,
   fromRepos.RezervacijeService,
   fromRepos.StoritveKampaService,
+  fromRepos.MnenjaService,
   fromRepos.ApiService,
   fromRepos.JwtService,
-  fromRepos.UserService
+  fromRepos.UserService,
 ];
 
 export * from './guards';

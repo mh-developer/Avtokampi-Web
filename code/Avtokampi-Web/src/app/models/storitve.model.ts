@@ -1,22 +1,22 @@
 interface StoritveModel {
-    id: number;
+    storitevId: number;
     naziv: string;
-    kategorija_storitve: number;
+    kategorijaStoritve: number;
     cenik: number;
 }
 
 export class Storitev implements StoritveModel {
-    private _id: number;
+    private _storitevId: number;
     private _naziv: string;
-    private _kategorija_storitve: number;
+    private _kategorijaStoritve: number;
     private _cenik: number;
 
-    get id(): number {
-      return this._id;
+    get storitevId(): number {
+      return this._storitevId;
     }
 
-    set id(value: number) {
-      this._id = value;
+    set storitevId(value: number) {
+      this._storitevId = value;
     }
 
     get naziv(): string {
@@ -27,12 +27,12 @@ export class Storitev implements StoritveModel {
       this._naziv = value;
     }
 
-    get kategorija_storitve(): number {
-      return this._kategorija_storitve;
+    get kategorijaStoritve(): number {
+      return this._kategorijaStoritve;
     }
 
-    set kategorija_storitve(value: number) {
-      this._kategorija_storitve = value;
+    set kategorijaStoritve(value: number) {
+      this._kategorijaStoritve = value;
     }
 
     get cenik(): number {

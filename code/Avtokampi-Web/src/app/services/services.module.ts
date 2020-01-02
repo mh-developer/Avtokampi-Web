@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
     fromServices.UserService,
     fromServices.AvtokampiService,
     fromServices.KampirnaMestaService,
+    fromServices.MnenjaService,
     fromServices.RezervacijeService,
     fromServices.StoritveKampaService,
     fromServices.NoAuthGuard,

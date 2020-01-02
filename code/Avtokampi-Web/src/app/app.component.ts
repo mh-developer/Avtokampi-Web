@@ -28,6 +28,7 @@ export class AppComponent {
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe(event => {
                 $.getScript('assets/js/main.js');
+                window.scrollTo(0, 0);
             });
     }
 

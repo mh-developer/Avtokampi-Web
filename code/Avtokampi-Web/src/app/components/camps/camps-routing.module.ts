@@ -7,6 +7,10 @@ const routes: Routes = [
     {
         path: '',
         component: fromCamps.CampsListComponent
+    },
+    {
+        path: 'camp/:avtokampId',
+        component: fromCamps.CampDetailsComponent
     }
 ];
 

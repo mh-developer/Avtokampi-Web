@@ -1,6 +1,6 @@
 import { Slika, Avtokamp } from './../../../models';
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { AvtokampiService } from '../../../services';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -16,6 +16,7 @@ export class CampCardComponent implements OnInit {
     campImg: Slika;
 
     constructor(
+        private route: ActivatedRoute,
         private router: Router,
         private avtokampiService: AvtokampiService,
         private http: HttpClient,
@@ -34,4 +35,7 @@ export class CampCardComponent implements OnInit {
         return preparedImg;
     }
 
+    onSelect(camp: Avtokamp) {
+        this.router.navigate(['camp', camp.avtokampId]);
+    }
 }

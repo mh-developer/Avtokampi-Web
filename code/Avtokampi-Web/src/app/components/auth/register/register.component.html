@@ -24,12 +24,6 @@
             <div class="col-md-9 pr-md-6">
                 <form [formGroup]="authForm" (ngSubmit)="submitForm()">
                     <div class="form-group">
-                        <div class="custom-file">
-                            <input type="file" formControlName="slika" class="custom-file-input" id="profile-img">
-                            <label class="custom-file-label" for="profile-img">Izberite fotografijo</label>
-                          </div>
-                    </div>
-                    <div class="form-group">
                         <input type="text" formControlName="ime" class="form-control" placeholder="Ime" required>
                     </div>
                     <div class="form-group">
