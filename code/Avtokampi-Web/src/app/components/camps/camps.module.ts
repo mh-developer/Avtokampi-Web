@@ -11,6 +11,8 @@ import { MapsModule } from '../maps/maps.module';
         fromCamps.CampCardComponent,
         fromCamps.CampDetailsComponent,
         fromCamps.CampsListComponent,
+        fromCamps.CampComponent,
+        fromCamps.CampingPitchesComponent,
     ],
     imports: [
         CommonModule,
@@ -19,6 +21,8 @@ import { MapsModule } from '../maps/maps.module';
     ],
     exports: [
         fromCamps.CampCardComponent,
+        fromCamps.CampsListComponent,
+        fromCamps.CampingPitchesComponent,
     ]
 })
 export class CampsModule { }

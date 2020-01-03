@@ -36,6 +36,7 @@ export class CampCardComponent implements OnInit {
     }
 
     onSelect(camp: Avtokamp) {
-        this.router.navigate(['camp', camp.avtokampId]);
+        // {id: selectedId}
+        this.router.navigate([this.router.url === '/reservations' ? 'reservations' : 'camp', camp.avtokampId]);
     }
 }

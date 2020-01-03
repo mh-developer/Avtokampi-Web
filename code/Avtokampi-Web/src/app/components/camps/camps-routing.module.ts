@@ -6,7 +6,7 @@ import * as fromCamps from '.';
 const routes: Routes = [
     {
         path: '',
-        component: fromCamps.CampsListComponent
+        component: fromCamps.CampComponent
     },
     {
         path: 'camp/:avtokampId',

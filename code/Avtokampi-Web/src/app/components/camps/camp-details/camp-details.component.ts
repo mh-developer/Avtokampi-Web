@@ -15,7 +15,6 @@ export class CampDetailsComponent implements OnInit {
     campImg: Slika[];
     camp: Avtokamp;
     storitve: Storitev[];
-    kampMesta: KampirnoMesto[];
     mnenja: Mnenje[];
 
     constructor(
@@ -38,8 +37,6 @@ export class CampDetailsComponent implements OnInit {
         this.avtokampiService.getSlike(this.campId).subscribe(imgs => this.campImg = imgs);
 
         this.storitveService.get(this.campId).subscribe(storitve => this.storitve = storitve);
-
-        this.kampirnaMestaService.getByAvtokamp(this.campId).subscribe(mesta => this.kampMesta = mesta);
 
         this.mnenjaService.getMnenjaByAvtokamp(this.campId).subscribe(mnenja => this.mnenja = mnenja);
     }
