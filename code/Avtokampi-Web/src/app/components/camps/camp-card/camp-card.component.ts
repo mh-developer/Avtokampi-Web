@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     styleUrls: ['./camp-card.component.css']
 })
 export class CampCardComponent implements OnInit {
-
+    @Input() campId?: number;
     @Input() camp: Avtokamp;
     campImg: Slika;
 
@@ -24,7 +24,7 @@ export class CampCardComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.avtokampiService.getSlike(this.camp.avtokampId).subscribe(imgs => {
+        this.avtokampiService.getSlike(this.campId ? this.campId : this.camp.avtokampId).subscribe(imgs => {
             this.campImg = imgs[0];
         });
     }

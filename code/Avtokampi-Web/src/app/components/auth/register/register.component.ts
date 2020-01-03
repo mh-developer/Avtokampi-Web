@@ -17,7 +17,9 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private userService: UserService,
         private fb: FormBuilder
-    ) {
+    ) { }
+
+    ngOnInit() {
         this.authForm = this.fb.group({
             'ime': ['', Validators.required],
             'priimek': ['', Validators.required],
@@ -27,10 +29,6 @@ export class RegisterComponent implements OnInit {
             'comfirmGeslo': [''],
             'gdpr': [false, Validators.required]
         }, { validator: this.checkPasswords });
-    }
-
-    ngOnInit() {
-
     }
 
     checkPasswords(group: FormGroup) {

@@ -11,7 +11,7 @@ import { KampirnaMestaService, AvtokampiService } from '../../../services';
 export class CampingPitchesComponent implements OnInit {
     @Input() campId?: number;
     @Input() camp?: Avtokamp;
-    kampMesta: KampirnoMesto[];
+    @Input() kampMesta?: KampirnoMesto[];
 
     constructor(
         private route: ActivatedRoute,
@@ -25,13 +25,18 @@ export class CampingPitchesComponent implements OnInit {
             this.route.paramMap.subscribe((params: ParamMap) => this.campId = parseInt(params.get('avtokampId')));
         }
 
-        if (!this.camp) {
+        if (this.campId && !this.camp) {
             this.avtokampiService.get(this.campId).subscribe(camp => this.camp = camp);
         }
 
-        if (this.campId) {
+        if (this.campId && !this.kampMesta) {
             this.kampirnaMestaService.getByAvtokamp(this.campId).subscribe(mesta => this.kampMesta = mesta);
         }
+    }
+
+    onSelect(camp: Avtokamp, mesto: KampirnoMesto) {
+        // {id: selectedId}
+        this.router.navigate(['reservations', camp.avtokampId, 'camping-pitches', mesto.kampirnoMestoId]);
     }
 
 }
