@@ -24,8 +24,8 @@ export class CampCardComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.avtokampiService.getSlike(this.campId ? this.campId : this.camp.avtokampId).subscribe(imgs => {
-            this.campImg = imgs[0];
+        this.avtokampiService.getSlika(this.campId ? this.campId : this.camp.avtokampId).subscribe(img => {
+            this.campImg = img;
         });
     }
 

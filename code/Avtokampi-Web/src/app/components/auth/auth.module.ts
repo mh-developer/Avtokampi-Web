@@ -7,16 +7,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    fromAuth.LoginComponent,
-    fromAuth.RegisterComponent
-  ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-  ]
+    declarations: [
+        fromAuth.LoginComponent,
+        fromAuth.RegisterComponent
+    ],
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+    ]
 })
 export class AuthModule { }

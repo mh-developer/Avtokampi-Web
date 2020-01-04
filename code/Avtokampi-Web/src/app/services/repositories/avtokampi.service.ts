@@ -44,6 +44,11 @@ export class AvtokampiService {
             .pipe(map(data => data));
     }
 
+    public getSlika(kamp_id: number): Observable<Slika> {
+        return this.apiService.get(`/Avtokampi/${kamp_id}/slika`)
+            .pipe(map(data => data));
+    }
+
     public getSlike(kamp_id: number): Observable<Slika[]> {
         return this.apiService.get(`/Avtokampi/${kamp_id}/slike`)
             .pipe(map(data => data));
