@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { KampirnoMesto, Avtokamp } from '../../../models';
-import { KampirnaMestaService, AvtokampiService } from '../../../services';
+import {KampirnoMesto, Avtokamp, Cenik, Uporabnik} from '../../../models';
+import {KampirnaMestaService, AvtokampiService, UserService} from '../../../services';
 
 @Component({
     selector: 'app-camping-pitches',
@@ -12,12 +12,15 @@ export class CampingPitchesComponent implements OnInit {
     @Input() campId?: number;
     @Input() camp?: Avtokamp;
     @Input() kampMesta?: KampirnoMesto[];
+    @Input() cenik?: Cenik;
+    user: Uporabnik;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private avtokampiService: AvtokampiService,
-        private kampirnaMestaService: KampirnaMestaService
+        private kampirnaMestaService: KampirnaMestaService,
+        private userService: UserService
     ) { }
 
     ngOnInit() {
@@ -32,11 +35,26 @@ export class CampingPitchesComponent implements OnInit {
         if (this.campId && !this.kampMesta) {
             this.kampirnaMestaService.getByAvtokamp(this.campId).subscribe(mesta => this.kampMesta = mesta);
         }
+
+        if (!this.cenik) {
+            this.avtokampiService.getCeniki(this.campId).subscribe(ceniki => this.cenik = ceniki[0])
+        }
     }
 
     onSelect(camp: Avtokamp, mesto: KampirnoMesto) {
         // {id: selectedId}
-        this.router.navigate(['reservations', camp.avtokampId, 'camping-pitches', mesto.kampirnoMestoId]);
+        this.userService.currentUser.subscribe(
+            (userData) => {
+                this.user = userData;
+            }
+        );
+
+        if (!this.user.uporabnikId) {
+            this.router.navigate(['auth', 'login']);
+        }
+        else {
+            this.router.navigate(['reservations', camp.avtokampId, 'camping-pitches', mesto.kampirnoMestoId]);
+        }
     }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Avtokamp, Slika, Storitev, KampirnoMesto, Mnenje } from '../../../models';
+import {Avtokamp, Slika, Storitev, KampirnoMesto, Mnenje, Cenik} from '../../../models';
 import { AvtokampiService, StoritveKampaService, KampirnaMestaService, MnenjaService } from '../../../services';
 
 @Component({
@@ -16,6 +16,7 @@ export class CampDetailsComponent implements OnInit {
     camp: Avtokamp;
     storitve: Storitev[];
     mnenja: Mnenje[];
+    cenik: Cenik;
 
     constructor(
         private route: ActivatedRoute,
@@ -39,6 +40,8 @@ export class CampDetailsComponent implements OnInit {
         this.storitveService.get(this.campId).subscribe(storitve => this.storitve = storitve);
 
         this.mnenjaService.getMnenjaByAvtokamp(this.campId).subscribe(mnenja => this.mnenja = mnenja);
+
+        this.avtokampiService.getCeniki(this.campId).subscribe(cenik => this.cenik = cenik[0]);
     }
 
     getFirstImg() {

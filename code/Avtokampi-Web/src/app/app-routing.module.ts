@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import * as fromComponents from './components';
+import {from} from "rxjs";
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
         path: 'auth',
         loadChildren: () => import(`./components`).then(m => m.AuthModule)
+    },
+    {
+        path: 'user-profile',
+        component: fromComponents.UserProfileComponent
     },
     {
         path: '**',

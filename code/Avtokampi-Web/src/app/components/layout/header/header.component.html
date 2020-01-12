@@ -26,8 +26,11 @@
                 <li *appShowAuthed="false" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
                     <a routerLink="/auth/login" class="nav-link">Prijava</a>
                 </li>
+<!--                <li *appShowAuthed="true" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">-->
+<!--                    <a routerLink="/auth/login" class="nav-link">{{ currentUser.ime + " " + currentUser.priimek }}</a>-->
+<!--                </li>-->
                 <li *appShowAuthed="true" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a routerLink="/auth/login" class="nav-link">{{ currentUser.ime + " " + currentUser.priimek }}</a>
+                    <a routerLink="/user-profile" class="nav-link">{{ currentUser.ime + " " + currentUser.priimek }}</a>
                 </li>
                 <li *appShowAuthed="true" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
                     <a routerLink="/" class="nav-link" (click)="logout()">Odjava</a>
