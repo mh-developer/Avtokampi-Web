@@ -39,7 +39,7 @@
                                 <!-- <div class="icon"><span class="ion-ios-arrow-down"></span></div> -->
                                 <select formControlName="vrstaKampiranja" class="form-control" placeholder="Vrsta kampiranja" required>
                                   <option value="">-- Izberite vrsto kampiranja --</option>
-                                  <option *ngFor="let vrsta of vrstaKampiranjaKampa" [value]="vrsta.vrstaKampiranjaId">{{ vrsta.naziv }}</option>
+                                  <option *ngFor="let vrsta of vrstaKampiranjaKampa; trackBy: trackById" [value]="vrsta.vrstaKampiranjaId">{{ vrsta.naziv }}</option>
                                 </select>
                               </div>
                         </div>

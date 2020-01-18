@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Avtokamp, KampirnoMesto, Uporabnik as User, VrstaKampiranja } from '../../../models';
 import { AvtokampiService, KampirnaMestaService, UserService, RezervacijeService } from '../../../services';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-reservation-form',
@@ -10,6 +12,7 @@ import { AvtokampiService, KampirnaMestaService, UserService, RezervacijeService
     styleUrls: ['./reservation-form.component.css']
 })
 export class ReservationFormComponent implements OnInit {
+    private _onDestroy = new Subject<void>();
     @Input() campId?: number;
     @Input() kampMestoId?: number;
     @Input() camp?: Avtokamp;
@@ -31,22 +34,24 @@ export class ReservationFormComponent implements OnInit {
 
     ngOnInit() {
         if (!this.campId) {
-            this.route.paramMap.subscribe((params: ParamMap) => this.campId = parseInt(params.get('avtokampId')));
+            this.route.paramMap.pipe(takeUntil(this._onDestroy))
+                .subscribe((params: ParamMap) => this.campId = parseInt(params.get('avtokampId')));
         }
 
         if (!this.kampMestoId) {
-            this.route.paramMap.subscribe((params: ParamMap) => this.kampMestoId = parseInt(params.get('kampirnoMestoId')));
+            this.route.paramMap.pipe(takeUntil(this._onDestroy))
+                .subscribe((params: ParamMap) => this.kampMestoId = parseInt(params.get('kampirnoMestoId')));
         }
 
         if (this.campId && !this.camp) {
-            this.avtokampiService.get(this.campId).subscribe(camp => this.camp = camp);
+            this.avtokampiService.get(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(camp => this.camp = camp);
         }
 
         if (this.kampMestoId && !this.kampMesto) {
-            this.kampirnaMestaService.get(this.kampMestoId).subscribe(mesta => this.kampMesto = mesta);
+            this.kampirnaMestaService.get(this.kampMestoId).pipe(takeUntil(this._onDestroy)).subscribe(mesta => this.kampMesto = mesta);
         }
 
-        this.reservationService.getVrsteKampiranja().subscribe(vrsta => this.vrstaKampiranjaKampa = vrsta);
+        this.reservationService.getVrsteKampiranja().pipe(takeUntil(this._onDestroy)).subscribe(vrsta => this.vrstaKampiranjaKampa = vrsta);
 
         Object.assign(this.user, this.userService.getCurrentUser());
 
@@ -56,6 +61,11 @@ export class ReservationFormComponent implements OnInit {
             'vrstaKampiranja': ['', Validators.required],
             'gdpr': [false, Validators.required]
         });
+    }
+
+    ngOnDestroy(): void {
+        this._onDestroy.next();
+        this._onDestroy.complete();
     }
 
     getKampMestoArray() {
@@ -74,7 +84,7 @@ export class ReservationFormComponent implements OnInit {
             uporabnik: this.user.uporabnikId,
             statusRezervacije: 1,
         };
-        this.reservationService.post(reservationData)
+        this.reservationService.post(reservationData).pipe(takeUntil(this._onDestroy))
             .subscribe(
                 data => this.router.navigateByUrl('/'),
                 err => {
@@ -84,4 +94,9 @@ export class ReservationFormComponent implements OnInit {
                 }
             );
     }
+
+    trackById(index, vrsta) {
+        return vrsta.vrstaKampiranjaId;
+    }
+
 }

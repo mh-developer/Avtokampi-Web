@@ -17,7 +17,7 @@
 
             <agm-map [latitude]="44.5" [longitude]="16.745060" [zoom]="7" [disableDefaultUI]="false"
                 [zoomControl]="false">
-                <agm-marker *ngFor="let camp of camps" [latitude]="camp.koordinataX" [longitude]="camp.koordinataY"></agm-marker>
+                <agm-marker *ngFor="let camp of camps; trackBy: trackById" [latitude]="camp?.koordinataX" [longitude]="camp?.koordinataY"></agm-marker>
             </agm-map>
 
         </div>

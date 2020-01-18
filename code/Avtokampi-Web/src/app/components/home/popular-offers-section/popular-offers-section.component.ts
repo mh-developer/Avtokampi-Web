@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Avtokamp } from '../../../models';
 import { AvtokampiService } from '../../../services';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-popular-offers-section',
@@ -10,18 +10,26 @@ import { AvtokampiService } from '../../../services';
   styleUrls: ['./popular-offers-section.component.css']
 })
 export class PopularOffersSectionComponent implements OnInit {
+    private _onDestroy = new Subject<void>();
     camps: Avtokamp[];
 
     constructor(
-        private router: Router,
-        private avtokampiService: AvtokampiService,
-        private http: HttpClient
+        private avtokampiService: AvtokampiService
     ) { }
 
     ngOnInit() {
-        this.avtokampiService.getPaging(4, 3).subscribe((camps: Avtokamp[]) => {
+        this.avtokampiService.getPaging(4, 3).pipe(takeUntil(this._onDestroy)).subscribe((camps: Avtokamp[]) => {
             this.camps = camps;
         });
+    }
+
+    ngOnDestroy(): void {
+        this._onDestroy.next();
+        this._onDestroy.complete();
+    }
+
+    trackById(index, camp) {
+        return camp.avtokampId;
     }
 
 }

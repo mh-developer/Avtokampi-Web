@@ -1,10 +1,10 @@
 import { Slika, Avtokamp, Cenik } from './../../../models';
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AvtokampiService } from '../../../services';
-import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import {min} from "rxjs/operators";
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-camp-card',
@@ -12,6 +12,7 @@ import {min} from "rxjs/operators";
     styleUrls: ['./camp-card.component.css']
 })
 export class CampCardComponent implements OnInit {
+    private _onDestroy = new Subject<void>();
     @Input() campId?: number;
     @Input() camp: Avtokamp;
     ceniki: Cenik[];
@@ -20,27 +21,33 @@ export class CampCardComponent implements OnInit {
     campImg: Slika;
 
     constructor(
-        private route: ActivatedRoute,
         private router: Router,
         private avtokampiService: AvtokampiService,
-        private http: HttpClient,
         private domSanitizer: DomSanitizer
     ) { }
 
     ngOnInit() {
-        this.avtokampiService.getSlika(this.campId ? this.campId : this.camp.avtokampId).subscribe(img => {
+        this.avtokampiService.getSlika(this.campId ? this.campId : this.camp.avtokampId)
+        .pipe(takeUntil(this._onDestroy))
+        .subscribe(img => {
             this.campImg = img;
         });
 
-        this.avtokampiService.getCeniki(this.campId ? this.campId : this.camp.avtokampId).subscribe(c => {
+        this.avtokampiService.getCeniki(this.campId ? this.campId : this.camp.avtokampId)
+        .pipe(takeUntil(this._onDestroy))
+        .subscribe(c => {
             this.ceniki = c;
             this.cene = [];
-            for (let cenik of this.ceniki){
-                this.cene.push(cenik.cena)
+            for (let cenik of this.ceniki) {
+                this.cene.push(cenik.cena);
             }
-            this.minCena = this.cene.reduce((a, b)=>Math.min(a, b));
-            console.log(this.minCena)
-        })
+            this.minCena = this.cene.reduce((a, b) => Math.min(a, b));
+        });
+    }
+
+    ngOnDestroy(): void {
+        this._onDestroy.next();
+        this._onDestroy.complete();
     }
 
     getImage(image: any) {

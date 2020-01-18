@@ -26,11 +26,11 @@
                 <div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li *ngFor="let img of campImg; let i = index" data-target="#carouselExampleIndicators"
+                            <li *ngFor="let img of campImg; let i = index; trackBy: trackByImgId" data-target="#carouselExampleIndicators"
                                 data-slide-to="0" class="{{ i == 0 ? 'active' : '' }}"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div *ngFor="let img of campImg; let i = index"
+                            <div *ngFor="let img of campImg; let i = index; trackBy: trackByImgId"
                                 class="carousel-item {{ i == 0 ? 'active' : '' }}">
                                 <img src="{{ getImageGallery(img.slika) }}" class="d-block w-100" alt="">
                             </div>
@@ -75,7 +75,7 @@
 
                         <div class="row">
 
-                            <div *ngFor="let storitev of storitve" class="col-md-3">
+                            <div *ngFor="let storitev of storitve; trackBy: trackByServiceId" class="col-md-3">
                                 <div class="destination">
                                     <div class="text p-3">
                                         <div class="d-flex">
@@ -115,7 +115,7 @@
                             <h3 class="mb-5">{{ mnenja?.length }} komentarjev</h3>
                             <ul class="comment-list">
 
-                                <li *ngFor="let comment of mnenja" class="comment">
+                                <li *ngFor="let comment of mnenja; trackBy: trackByCommentId" class="comment">
                                     <div class="vcard bio">
                                         <img src="assets/images/person_1.jpg" alt="Image placeholder">
                                     </div>

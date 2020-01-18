@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import {KampirnoMesto, Avtokamp, Cenik, Uporabnik} from '../../../models';
-import {KampirnaMestaService, AvtokampiService, UserService} from '../../../services';
+import { KampirnoMesto, Avtokamp, Cenik, Uporabnik } from '../../../models';
+import { KampirnaMestaService, AvtokampiService, UserService } from '../../../services';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-camping-pitches',
@@ -9,6 +11,7 @@ import {KampirnaMestaService, AvtokampiService, UserService} from '../../../serv
     styleUrls: ['./camping-pitches.component.css']
 })
 export class CampingPitchesComponent implements OnInit {
+    private _onDestroy = new Subject<void>();
     @Input() campId?: number;
     @Input() camp?: Avtokamp;
     @Input() kampMesta?: KampirnoMesto[];
@@ -25,19 +28,22 @@ export class CampingPitchesComponent implements OnInit {
 
     ngOnInit() {
         if (!this.campId) {
-            this.route.paramMap.subscribe((params: ParamMap) => this.campId = parseInt(params.get('avtokampId')));
+            this.route.paramMap.pipe(takeUntil(this._onDestroy))
+                .subscribe((params: ParamMap) => this.campId = parseInt(params.get('avtokampId')));
         }
 
         if (this.campId && !this.camp) {
-            this.avtokampiService.get(this.campId).subscribe(camp => this.camp = camp);
+            this.avtokampiService.get(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(camp => this.camp = camp);
         }
 
         if (this.campId && !this.kampMesta) {
-            this.kampirnaMestaService.getByAvtokamp(this.campId).subscribe(mesta => this.kampMesta = mesta);
+            this.kampirnaMestaService.getByAvtokamp(this.campId).pipe(takeUntil(this._onDestroy))
+                .subscribe(mesta => this.kampMesta = mesta);
         }
 
         if (!this.cenik) {
-            this.avtokampiService.getCeniki(this.campId).subscribe(ceniki => this.cenik = ceniki[0])
+            this.avtokampiService.getCeniki(this.campId).pipe(takeUntil(this._onDestroy))
+                .subscribe(ceniki => this.cenik = ceniki[0]);
         }
     }
 
@@ -51,10 +57,18 @@ export class CampingPitchesComponent implements OnInit {
 
         if (!this.user.uporabnikId) {
             this.router.navigate(['auth', 'login']);
-        }
-        else {
+        } else {
             this.router.navigate(['reservations', camp.avtokampId, 'camping-pitches', mesto.kampirnoMestoId]);
         }
+    }
+
+    ngOnDestroy(): void {
+        this._onDestroy.next();
+        this._onDestroy.complete();
+    }
+
+    trackById(index, mesto) {
+        return mesto.kampirnoMestoId;
     }
 
 }

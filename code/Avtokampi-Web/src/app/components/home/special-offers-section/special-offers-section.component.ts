@@ -1,27 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AvtokampiService } from 'src/app/services';
-import { HttpClient } from '@angular/common/http';
 import { Avtokamp } from 'src/app/models';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-special-offers-section',
-  templateUrl: './special-offers-section.component.html',
-  styleUrls: ['./special-offers-section.component.css']
+    selector: 'app-special-offers-section',
+    templateUrl: './special-offers-section.component.html',
+    styleUrls: ['./special-offers-section.component.css']
 })
 export class SpecialOffersSectionComponent implements OnInit {
+    private _onDestroy = new Subject<void>();
     camps: Avtokamp[];
 
     constructor(
-        private router: Router,
-        private avtokampiService: AvtokampiService,
-        private http: HttpClient
+        private avtokampiService: AvtokampiService
     ) { }
 
-  ngOnInit() {
-    this.avtokampiService.getPaging(1, 5).subscribe((camps: Avtokamp[]) => {
-        this.camps = camps;
-    });
-  }
+    ngOnInit() {
+        this.avtokampiService.getPaging(1, 5).pipe(takeUntil(this._onDestroy)).subscribe((camps: Avtokamp[]) => {
+            this.camps = camps;
+        });
+    }
+
+    ngOnDestroy(): void {
+        this._onDestroy.next();
+        this._onDestroy.complete();
+    }
+
+    trackById(index, camp) {
+        return camp.avtokampId;
+    }
 
 }

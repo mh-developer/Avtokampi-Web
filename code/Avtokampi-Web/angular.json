@@ -52,7 +52,7 @@
               "src/assets/js/bootstrap-datepicker.js",
               "src/assets/js/jquery.timepicker.min.js",
               "src/assets/js/scrollax.min.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main-theme.js"
             ]
           },
           "configurations": {

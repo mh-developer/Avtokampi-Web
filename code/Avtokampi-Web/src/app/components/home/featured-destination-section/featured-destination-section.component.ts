@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router, NavigationEnd } from '@angular/router';
 import { Avtokamp } from '../../../models';
 import { AvtokampiService } from '../../../services';
-import { filter } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-featured-destination-section',
@@ -11,18 +10,26 @@ import { filter } from 'rxjs/operators';
     styleUrls: ['./featured-destination-section.component.css']
 })
 export class FeaturedDestinationSectionComponent implements OnInit {
+    private _onDestroy = new Subject<void>();
     camps: Avtokamp[];
 
     constructor(
-        private router: Router,
-        private avtokampiService: AvtokampiService,
-        private http: HttpClient
+        private avtokampiService: AvtokampiService
     ) { }
 
     ngOnInit() {
-        this.avtokampiService.getPaging(2, 5).subscribe((camps: Avtokamp[]) => {
+        this.avtokampiService.getPaging(2, 5).pipe(takeUntil(this._onDestroy)).subscribe((camps: Avtokamp[]) => {
             this.camps = camps;
         });
+    }
+
+    ngOnDestroy(): void {
+        this._onDestroy.next();
+        this._onDestroy.complete();
+    }
+
+    trackById(index, camp) {
+        return camp.avtokampId;
     }
 
 }

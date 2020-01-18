@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import {Avtokamp, Slika, Storitev, KampirnoMesto, Mnenje, Cenik} from '../../../models';
-import { AvtokampiService, StoritveKampaService, KampirnaMestaService, MnenjaService } from '../../../services';
+import { Avtokamp, Slika, Storitev, Mnenje, Cenik } from '../../../models';
+import { AvtokampiService, StoritveKampaService, MnenjaService } from '../../../services';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-camp-details',
@@ -11,6 +12,7 @@ import { AvtokampiService, StoritveKampaService, KampirnaMestaService, MnenjaSer
     styleUrls: ['./camp-details.component.css']
 })
 export class CampDetailsComponent implements OnInit {
+    private _onDestroy = new Subject<void>();
     campId: number;
     campImg: Slika[];
     camp: Avtokamp;
@@ -20,28 +22,31 @@ export class CampDetailsComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private router: Router,
         private avtokampiService: AvtokampiService,
         private storitveService: StoritveKampaService,
-        private kampirnaMestaService: KampirnaMestaService,
         private mnenjaService: MnenjaService,
         private domSanitizer: DomSanitizer
     ) { }
 
     ngOnInit() {
-        this.route.paramMap.subscribe((params: ParamMap) => {
+        this.route.paramMap.pipe(takeUntil(this._onDestroy)).subscribe((params: ParamMap) => {
             this.campId = parseInt(params.get('avtokampId'));
         });
 
-        this.avtokampiService.get(this.campId).subscribe(camp => this.camp = camp);
+        this.avtokampiService.get(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(camp => this.camp = camp);
 
-        this.avtokampiService.getSlike(this.campId).subscribe(imgs => this.campImg = imgs);
+        this.avtokampiService.getSlike(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(imgs => this.campImg = imgs);
 
-        this.storitveService.get(this.campId).subscribe(storitve => this.storitve = storitve);
+        this.storitveService.get(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(storitve => this.storitve = storitve);
 
-        this.mnenjaService.getMnenjaByAvtokamp(this.campId).subscribe(mnenja => this.mnenja = mnenja);
+        this.mnenjaService.getMnenjaByAvtokamp(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(mnenja => this.mnenja = mnenja);
 
-        this.avtokampiService.getCeniki(this.campId).subscribe(cenik => this.cenik = cenik[0]);
+        this.avtokampiService.getCeniki(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(cenik => this.cenik = cenik[0]);
+    }
+
+    ngOnDestroy(): void {
+        this._onDestroy.next();
+        this._onDestroy.complete();
     }
 
     getFirstImg() {
@@ -62,5 +67,17 @@ export class CampDetailsComponent implements OnInit {
 
     getRange() {
         return [...Array(5).keys()].map(i => i + 1);
+    }
+
+    trackByImgId(index, img) {
+        return img.slikaId;
+    }
+
+    trackByServiceId(index, storitev) {
+        return storitev.storitevId;
+    }
+
+    trackByCommentId(index, comment) {
+        return comment.mnenjeId;
     }
 }

@@ -31,7 +31,7 @@ export class AppComponent {
         this.routerSubscription = this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe(event => {
-                $.getScript('assets/js/main.js');
+                $.getScript('assets/js/main-theme.js');
                 window.scrollTo(0, 0);
             });
     }

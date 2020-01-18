@@ -14,7 +14,7 @@
     <div class="container">
         <div class="col-lg-12">
             <div class="row ftco-animate">
-                <div *ngFor="let res of reservations" class="col-md-4">
+                <div *ngFor="let res of reservations; trackBy: trackById" class="col-md-4">
                     <div class="destination">
                         <div class="img img-2 d-flex justify-content-center align-items-center"
                            [style.background-image]="getImage(campImages[res?.rezervacijaId]?.slika)">
