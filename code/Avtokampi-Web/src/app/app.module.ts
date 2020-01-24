@@ -15,7 +15,6 @@ import { ServicesModule } from './services/services.module';
         fromComponents.HeaderComponent,
         fromComponents.FooterComponent,
         fromComponents.PageNotFoundComponent,
-        fromComponents.UserProfileComponent,
     ],
     imports: [
         BrowserModule,

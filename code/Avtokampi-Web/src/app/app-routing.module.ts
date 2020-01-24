@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import * as fromComponents from './components';
-import {from} from "rxjs";
 
 
 const routes: Routes = [
@@ -12,27 +11,32 @@ const routes: Routes = [
     },
     {
         path: 'home',
-        loadChildren: () => import(`./components`).then(m => m.HomePageModule)
+        loadChildren: './components/home/home-page.module#HomePageModule',
+        // loadChildren: () => import(`./components`).then(m => m.HomePageModule)
     },
     {
         path: 'camps',
-        loadChildren: () => import(`./components`).then(m => m.CampsModule)
+        loadChildren: './components/camps/camps.module#CampsModule',
+        // loadChildren: () => import(`./components`).then(m => m.CampsModule)
     },
     {
         path: 'maps',
-        loadChildren: () => import(`./components`).then(m => m.MapsModule)
+        loadChildren: './components/maps/maps.module#MapsModule',
+        // loadChildren: () => import(`./components`).then(m => m.MapsModule)
     },
     {
         path: 'reservations',
-        loadChildren: () => import(`./components`).then(m => m.ReservationsModule)
+        loadChildren: './components/reservations/reservations.module#ReservationsModule',
+        // loadChildren: () => import(`./components`).then(m => m.ReservationsModule)
     },
     {
         path: 'auth',
-        loadChildren: () => import(`./components`).then(m => m.AuthModule)
+        loadChildren: './components/auth/auth.module#AuthModule',
+        // loadChildren: () => import(`./components`).then(m => m.AuthModule)
     },
     {
         path: 'user-profile',
-        component: fromComponents.UserProfileComponent
+        loadChildren: './components/user-profile/user-profile.module#UserProfileModule',
     },
     {
         path: '**',

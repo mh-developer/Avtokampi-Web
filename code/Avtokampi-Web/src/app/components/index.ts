@@ -48,3 +48,4 @@ export * from './maps/maps.module';
 export * from './auth/auth.module';
 export * from './camps/camps.module';
 export * from './reservations/reservations.module';
+export * from './user-profile/user-profile.module';
