@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AvtokampiService, KampirnaMestaService, RezervacijeService, UserService } from '../../services/repositories';
 import { Avtokamp, KampirnoMesto, Rezervacija, Slika, Uporabnik as User } from '../../models';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs/operators';
     templateUrl: './user-profile.component.html',
     styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
 
     private _onDestroy = new Subject<void>();
     reservations: Rezervacija[];

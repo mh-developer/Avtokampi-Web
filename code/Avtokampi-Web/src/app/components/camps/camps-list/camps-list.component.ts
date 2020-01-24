@@ -1,5 +1,5 @@
 import { Avtokamp } from './../../../models';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AvtokampiService } from '../../../services';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { takeUntil } from 'rxjs/operators';
     templateUrl: './camps-list.component.html',
     styleUrls: ['./camps-list.component.css']
 })
-export class CampsListComponent implements OnInit {
+export class CampsListComponent implements OnInit, OnDestroy {
     private _onDestroy = new Subject<void>();
     camps: Avtokamp[];
 

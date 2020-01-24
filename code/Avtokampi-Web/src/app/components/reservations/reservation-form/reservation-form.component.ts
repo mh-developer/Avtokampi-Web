@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Avtokamp, KampirnoMesto, Uporabnik as User, VrstaKampiranja } from '../../../models';
@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
     templateUrl: './reservation-form.component.html',
     styleUrls: ['./reservation-form.component.css']
 })
-export class ReservationFormComponent implements OnInit {
+export class ReservationFormComponent implements OnInit, OnDestroy {
     private _onDestroy = new Subject<void>();
     @Input() campId?: number;
     @Input() kampMestoId?: number;

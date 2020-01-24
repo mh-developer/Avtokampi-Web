@@ -1,5 +1,5 @@
 import { Slika, Avtokamp, Cenik } from './../../../models';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AvtokampiService } from '../../../services';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
     templateUrl: './camp-card.component.html',
     styleUrls: ['./camp-card.component.css']
 })
-export class CampCardComponent implements OnInit {
+export class CampCardComponent implements OnInit, OnDestroy {
     private _onDestroy = new Subject<void>();
     @Input() campId?: number;
     @Input() camp: Avtokamp;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Avtokamp } from '../../../models';
 import { AvtokampiService } from '../../../services';
 import { Subject } from 'rxjs';
@@ -9,7 +9,7 @@ import { takeUntil } from 'rxjs/operators';
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
     private _onDestroy = new Subject<void>();
     camps: Avtokamp[];
 

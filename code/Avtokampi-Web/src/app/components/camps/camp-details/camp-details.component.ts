@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Avtokamp, Slika, Storitev, Mnenje, Cenik } from '../../../models';
@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
     templateUrl: './camp-details.component.html',
     styleUrls: ['./camp-details.component.css']
 })
-export class CampDetailsComponent implements OnInit {
+export class CampDetailsComponent implements OnInit, OnDestroy {
     private _onDestroy = new Subject<void>();
     campId: number;
     campImg: Slika[];

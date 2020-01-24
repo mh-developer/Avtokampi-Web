@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { KampirnoMesto, Avtokamp, Cenik, Uporabnik } from '../../../models';
 import { KampirnaMestaService, AvtokampiService, UserService } from '../../../services';
@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs/operators';
     templateUrl: './camping-pitches.component.html',
     styleUrls: ['./camping-pitches.component.css']
 })
-export class CampingPitchesComponent implements OnInit {
+export class CampingPitchesComponent implements OnInit, OnDestroy {
     private _onDestroy = new Subject<void>();
     @Input() campId?: number;
     @Input() camp?: Avtokamp;
