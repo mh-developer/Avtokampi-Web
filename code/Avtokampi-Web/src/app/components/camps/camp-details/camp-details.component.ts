@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Avtokamp, Slika, Storitev, Mnenje, Cenik } from '../../../models';
+import { Avtokamp, Slika, Storitev, Mnenje } from '../../../models';
 import { AvtokampiService, StoritveKampaService, MnenjaService } from '../../../services';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -14,11 +14,10 @@ import { takeUntil } from 'rxjs/operators';
 export class CampDetailsComponent implements OnInit, OnDestroy {
     private _onDestroy = new Subject<void>();
     campId: number;
-    campImg: Slika[];
-    camp: Avtokamp;
-    storitve: Storitev[];
-    mnenja: Mnenje[];
-    cenik: Cenik;
+    campImg: Observable<Slika[]>;
+    camp: Observable<Avtokamp>;
+    storitve: Observable<Storitev[]>;
+    mnenja: Observable<Mnenje[]>;
 
     constructor(
         private route: ActivatedRoute,
@@ -33,15 +32,13 @@ export class CampDetailsComponent implements OnInit, OnDestroy {
             this.campId = parseInt(params.get('avtokampId'));
         });
 
-        this.avtokampiService.get(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(camp => this.camp = camp);
+        this.camp = this.avtokampiService.get(this.campId);
 
-        this.avtokampiService.getSlike(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(imgs => this.campImg = imgs);
+        this.campImg = this.avtokampiService.getSlike(this.campId);
 
-        this.storitveService.get(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(storitve => this.storitve = storitve);
+        this.storitve = this.storitveService.get(this.campId);
 
-        this.mnenjaService.getMnenjaByAvtokamp(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(mnenja => this.mnenja = mnenja);
-
-        this.avtokampiService.getCeniki(this.campId).pipe(takeUntil(this._onDestroy)).subscribe(cenik => this.cenik = cenik[0]);
+        this.mnenja = this.mnenjaService.getMnenjaByAvtokamp(this.campId);
     }
 
     ngOnDestroy(): void {

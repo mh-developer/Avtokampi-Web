@@ -1,10 +1,10 @@
-<div class="hero-wrap js-fullheight" [style.background-image]="getImage(getFirstImg())">
+<div class="hero-wrap js-fullheight" [style.background-image]="getImage((campImg | async) && (campImg | async)[0] && (campImg | async)[0]?.slika ? (campImg | async)[0]?.slika : '')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
             data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ camp?.naziv }}
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ (camp | async)?.naziv }}
                 </h1>
             </div>
         </div>
@@ -19,18 +19,18 @@
                 <div class="row justify-content-start mb-3 pb-3">
                     <div class="col-md-12 heading-section ftco-animate">
                         <span class="subheading">Avtokamp</span>
-                        <h2><strong>{{ camp?.naziv }}</strong></h2>
+                        <h2><strong>{{ (camp | async)?.naziv }}</strong></h2>
                     </div>
                 </div>
 
                 <div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li *ngFor="let img of campImg; let i = index; trackBy: trackByImgId" data-target="#carouselExampleIndicators"
+                            <li *ngFor="let img of campImg | async; let i = index; trackBy: trackByImgId" data-target="#carouselExampleIndicators"
                                 data-slide-to="0" class="{{ i == 0 ? 'active' : '' }}"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div *ngFor="let img of campImg; let i = index; trackBy: trackByImgId"
+                            <div *ngFor="let img of campImg | async; let i = index; trackBy: trackByImgId"
                                 class="carousel-item {{ i == 0 ? 'active' : '' }}">
                                 <img src="{{ getImageGallery(img.slika) }}" class="d-block w-100" alt="">
                             </div>
@@ -52,7 +52,7 @@
                     <div class="col-md-12 heading-section ftco-animate">
                         <h2 class="mb-4"><strong>Opis</strong> kampa</h2>
                         <p>
-                            {{ camp?.opis }}
+                            {{ (camp | async)?.opis }}
                         </p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                         <div>
                             <agm-map [latitude]="45.180348" [longitude]="14.545060" [zoom]="8"
                                      [disableDefaultUI]="false" [zoomControl]="false">
-                                <agm-marker [latitude]="camp?.koordinataX" [longitude]="camp?.koordinataY"></agm-marker>
+                                <agm-marker [latitude]="(camp | async)?.koordinataX" [longitude]="(camp | async)?.koordinataY"></agm-marker>
                             </agm-map>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
 
                         <div class="row">
 
-                            <div *ngFor="let storitev of storitve; trackBy: trackByServiceId" class="col-md-3">
+                            <div *ngFor="let storitev of storitve | async; trackBy: trackByServiceId" class="col-md-3">
                                 <div class="destination">
                                     <div class="text p-3">
                                         <div class="d-flex">
@@ -103,7 +103,7 @@
                     <div class="col-md-12 heading-section ftco-animate">
                         <h2 class="mb-4"><strong>Rezerviraj</strong> kampirno mesto</h2>
 
-                        <app-camping-pitches [campId]="campId" [camp]="camp"></app-camping-pitches>
+                        <app-camping-pitches [campId]="campId" [camp]="(camp | async)"></app-camping-pitches>
                     </div>
                 </div>
 
@@ -112,10 +112,10 @@
                         <h2 class="mb-4"><strong>Mnenja</strong> naših strank</h2>
 
                         <div class="mt-5">
-                            <h3 class="mb-5">{{ mnenja?.length }} komentarjev</h3>
+                            <h3 class="mb-5">{{ (mnenja | async)?.length }} komentarjev</h3>
                             <ul class="comment-list">
 
-                                <li *ngFor="let comment of mnenja; trackBy: trackByCommentId" class="comment">
+                                <li *ngFor="let comment of mnenja | async; trackBy: trackByCommentId" class="comment">
                                     <div class="vcard bio">
                                         <img src="assets/images/person_1.jpg" alt="Image placeholder">
                                     </div>

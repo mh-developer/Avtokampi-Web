@@ -1,6 +1,6 @@
 <div class="destination">
     <a (click)="onSelect(camp)" class="img img-2 d-flex justify-content-center align-items-center"
-        [style.background-image]="getImage(campImg?.slika)">
+        [style.background-image]="getImage((campImg | async)?.slika)">
         <div class="icon d-flex justify-content-center align-items-center">
             <span class="icon-search2"></span>
         </div>

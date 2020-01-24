@@ -92,7 +92,7 @@
             </div>
             <div class="col-lg-9">
                 <div class="row ftco-animate">
-                    <app-camp-card *ngFor="let camp of camps; trackBy: trackById" [camp]="camp" class="col-md-4"></app-camp-card>
+                    <app-camp-card *ngFor="let camp of camps | async; trackBy: trackById" [camp]="camp" class="col-md-4"></app-camp-card>
                     <!-- <div class="col-md-4 ftco-animate"></div> -->
                 </div>
                 <div class="row mt-5">

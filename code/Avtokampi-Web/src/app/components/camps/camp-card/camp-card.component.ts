@@ -3,7 +3,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AvtokampiService } from '../../../services';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -18,7 +18,7 @@ export class CampCardComponent implements OnInit, OnDestroy {
     ceniki: Cenik[];
     cene: number[];
     minCena: number;
-    campImg: Slika;
+    campImg: Observable<Slika>;
 
     constructor(
         private router: Router,
@@ -27,11 +27,13 @@ export class CampCardComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.avtokampiService.getSlika(this.campId ? this.campId : this.camp.avtokampId)
-        .pipe(takeUntil(this._onDestroy))
-        .subscribe(img => {
-            this.campImg = img;
-        });
+        this.campImg = this.avtokampiService.getSlika(this.campId ? this.campId : this.camp.avtokampId);
+
+        // this.avtokampiService.getSlika(this.campId ? this.campId : this.camp.avtokampId)
+        // .pipe(takeUntil(this._onDestroy))
+        // .subscribe(img => {
+        //     this.campImg = img;
+        // });
 
         this.avtokampiService.getCeniki(this.campId ? this.campId : this.camp.avtokampId)
         .pipe(takeUntil(this._onDestroy))
