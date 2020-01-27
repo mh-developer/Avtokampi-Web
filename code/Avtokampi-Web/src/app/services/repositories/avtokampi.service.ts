@@ -45,15 +45,13 @@ export class AvtokampiService {
     }
 
     public getSlika(kamp_id: number): Observable<Slika> {
-        return null;
-        // return this.apiService.get(`/Avtokampi/${kamp_id}/slika`)
-        //     .pipe(map(data => data));
+        return this.apiService.get(`/Avtokampi/${kamp_id}/slika`)
+            .pipe(map(data => data));
     }
 
     public getSlike(kamp_id: number): Observable<Slika[]> {
-        return null;
-        // return this.apiService.get(`/Avtokampi/${kamp_id}/slike`)
-        //     .pipe(map(data => data));
+        return this.apiService.get(`/Avtokampi/${kamp_id}/slike`)
+            .pipe(map(data => data));
     }
 
     public postSlike(kamp_id: number, items: Slika[]): Observable<boolean> {
