@@ -23,7 +23,8 @@ jobs:
       run: |
         cd code/Avtokampi-Web/
         npm install
-        npm build
+        npm audit fix
+        npm run build
 
     - name: Remove old Angular files
       uses: appleboy/ssh-action@master
