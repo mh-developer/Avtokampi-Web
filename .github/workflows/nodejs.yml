@@ -22,11 +22,8 @@ jobs:
     - name: npm install, build, and test
       run: |
         cd code/Avtokampi-Web/
-        npm install -g @angular/cli
-        npm audit fix
-        ng config -g cli.warnings.versionMismatch false
         npm install
-        ng build --prod
+        npm build
 
     - name: Remove old Angular files
       uses: appleboy/ssh-action@master
