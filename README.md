@@ -25,11 +25,8 @@ following:
 
 When you have installed dev tools, run following commands:
 - `cd code/Avtokampi-Web/`
-- `npm install -g @angular/cli`
-- `npm audit fix`
-- `ng config -g cli.warnings.versionMismatch false`
 - `npm install`
-- `ng serve`
+- `npm start`
 
 ## Purpose of the app
 
